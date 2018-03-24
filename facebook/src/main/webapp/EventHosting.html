@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<link rel="stylesheet" href="css/profile_timeline.css">
+
+<script src="js/navbar.js"></script>
+<link rel="stylesheet" href="css/chat.css">
+<script src="js/chat.js"></script>
+<title>Events</title>
+<style>
+.image-container {
+	display: flex;
+	justify-content: center;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbarstyle2  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto;"
+					class="activepage" id="UserHomeImg"></img></li>
+				<li class="ex1"><a href="profile.html"
+					style="color: white;" id="UserHome"> </a></li>
+				<li class="ex1"><a href="home.html"
+					style="color: white;"><span class="glyphicon glyphicon-user"></span>
+						Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 5em;">
+			<div class="col-md-2" style="padding-right: 0;">
+				<p>
+					<a href="profile.html" id="UserName" class="heading">
+
+						<img src="" id="UserImg" style="height: 1.5em; width: 1.5em;">
+
+					</a>
+				</p>
+				<p>
+					<a href="home.html" class="heading"><span
+						class="glyphicon glyphicon-envelope"></span> Newsfeed </a>
+				</p>
+				<br>
+				<p class="heading">EXPLORE</p>
+				<a href="Group.html" class="heading"><span
+					class="glyphicon glyphicon-move"></span> Groups</a><br> <a
+					href="profileFriends.html" class="heading"><span
+					class="glyphicon glyphicon-glass"></span> Friend List</a><br> <a
+					href="profilePhotos.html" class="heading"><span
+					class="glyphicon glyphicon-camera"></span> Photos</a><br> <a
+					href="findFriends.html" class="heading"><span
+					class="glyphicon glyphicon-plus-sign"></span> Find Friends</a><br>
+				<a href="Event.html" class="heading"><span
+					class="glyphicon glyphicon-calendar"></span> Events</a><br><a
+					href='#' onclick="window.open('location.html', '_blank');" class="heading"><span
+					class="glyphicon glyphicon-map-marker"></span> Location</a>
+				</div>
+			<!-- 	<div class="col-md-8" >
+			<div class="image-container">
+				<img src="2jpg.jpg" />
+			</div>
+			<div class="image-container">
+				<img src="3.png" />
+			</div>
+				</div> -->
+
+			<!-- ////////////////////NEWS FEED////////////////////////// -->
+
+			<div class="col-sm-7" id="newsFeed">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<ul class="nav nav-tabs">
+							<li><a href="Event.html">All</a></li>
+							<li><a href="EventHosting.html">Hosting</a></li>
+							<li><button type="button" class="btn btn-primary pull-right"
+									data-toggle="modal" data-target="#myModal"
+									style="margin-left: 9em;">Create Event</button></li>
+						</ul>
+					</div>
+
+				</div>
+
+				<!-- ------------------------------------show events -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span class="glyphicon glyphicon-user"></span>&ensp;&ensp;<b>Events</b>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-6" id="eventsAll1"></div>
+							<div class="col-sm-6" id="eventsAll2"></div>
+						</div>
+					</div>
+				</div>
+				<!-- ------------------------------------show events -->
+			</div>
+
+			<div class="col-md-1" style="padding: 0em;"></div>
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+					
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Create Event</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" method="post"
+						action="webapi/events" enctype="multipart/form-data">
+
+						<!-- ---------------event photo------------- -->
+						<div class="form-group">
+
+							<p id="uploadImage">
+								Event photo : <input type="file" name="file" size="45"
+									class="btn btn-success" />
+							</p>
+
+						</div>
+						<!-- ---------------event photo------------- -->
+
+
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="email">Event
+								name</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="event name"
+									name="event_name" placeholder="event name">
+							</div>
+						</div>
+						<!-- -------------------------------------- -->
+						<div class="form-group">
+							<input type="text" class="form-control" id="adminId"
+								name="admin_id" style="display: none">
+						</div>
+						<!-- ------------------------------------- -->
+						<div class="form-group">
+							<label class="control-label col-sm-4">Location</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="location"
+									name="location" placeholder="location">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4">Start Date time</label>
+							<div class="col-sm-8">
+								<input type="datetime-local" name="start_time"
+									class="form-control">
+							</div>
+						</div>
+						<a href="#" class="pull-right"
+							onclick="this.style.display = 'none'" data-toggle="collapse"
+							data-target="#demos">end date</a>
+						<div id="demos" class="collapse">
+							<div class="form-group">
+								<label class="control-label col-sm-4">End Date time</label>
+								<div class="col-sm-8">
+									<input type="datetime-local" class="form-control"
+										name="end_time">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="control-label col-sm-4"
+										style="margin-top: 4em; margin-left: 6.3em;">Description</label>
+								</div>
+								<div class="col-sm-7">
+									<textarea class="form-control" rows="5" name="description"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary pull-right">Create
+									event</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- -------------------------- -->
+
+</body>
+<script>
+	var displayEvents = function(data, numb) {
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{
+			//var newDiv=document.createElement("DIV");
+			//newDiv.className="col-md-6";
+
+			var elem = document.createElement("img");
+			elem.setAttribute('src', data['piclocation']);
+			elem.className = "img-responsive crop";
+			//		newDiv.appendChild(elem);
+			newPanelBody.appendChild(elem);
+
+			//		var newDiv=document.createElement("DIV");
+			//		newDiv.className="col-md-6";
+
+			var h5 = document.createElement("H5");
+			var h5text = document.createTextNode(data['event_name']);
+			h5.appendChild(h5text);
+			//		newDiv.appendChild(h5);
+			newPanelBody.appendChild(h5);
+
+			var btn = document.createElement("BUTTON");
+			btn.className = "btn btn-info pull-right edit";
+			btn.id = data["event_id"];
+			btn.addEventListener('click', function(event) {
+				sessionStorage.event_id = btn.id;
+				window.location.href = "eventAbout.html";
+			});
+			var t = document.createTextNode("About event");
+			btn.appendChild(t);
+			newPanelBody.appendChild(btn);
+		}
+		newPanel.appendChild(newPanelBody);
+		if (numb % 2 == 0)
+			document.getElementById('eventsAll1').appendChild(newPanel);
+		else
+			document.getElementById('eventsAll2').appendChild(newPanel);
+	};
+
+	$.ajax({
+		type : "get",
+		url : "webapi/events/hosting/" + sessionStorage.id,
+
+		success : function(res) {
+			//console.log(res);
+			var len = res.length;
+			for (i = 0; i < len; i++) {
+				displayEvents(res[i], i);
+			}
+		}
+	});
+
+	//console.log("id:" + sessionStorage.id);
+	$('#adminId').val(sessionStorage.id);
+</script>
+</html>
+
+
+

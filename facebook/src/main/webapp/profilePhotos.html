@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+
+<script src="js/navbar.js"></script>
+<script src="js/profilephotoUpdate.js"></script>
+<link rel="stylesheet" href="css/chat.css">
+	<script src="js/chat.js"></script>
+
+
+<title>Photos</title>
+
+
+<style>
+.fittodiv {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+
+.inputstyle {
+	outline: none;
+	text-align: center;
+}
+
+.navbarstyle {
+	display: block;
+	width: 100%;
+	color: white;
+	height: 4em;
+	border-radius: 0px;
+	background-color: #444444;
+	border-color: white;
+	border-width: 0em;
+}
+
+#tphoto {
+	padding: 1px;
+	margin: 0px;
+	width: 100%
+}
+
+.navbarstyle2 {
+	background-color: #1F83E5;
+	border: 0px;
+}
+
+button.ex1:hover, button.ex1:active {
+	background-color: black;
+	color: white;
+}
+
+li.ex1:hover, li.ex1:active {
+	background-color: #145ea8;
+}
+
+.activepage2 {
+	background-color: white;
+}
+
+.activepage {
+	background-color: #2484e5;
+}
+
+.panel {
+	overflow: auto;
+}
+
+.inputstyle {
+	background-color: white;
+	color: black;
+	border: none;
+	outline: none;
+	text-align: left;
+}
+
+.padding-0 {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+img {
+	object-fit: cover;
+}
+
+.crop {
+	width: 100%;
+	height: 20em;
+}
+
+.edit {
+	font-size: 0.9em;
+}
+
+.dynamicPanel {
+	padding: 0;
+	margin: 0;
+}
+</style>
+</head>
+
+<body style="background-color: #dfe3ee">
+	<nav class="navbar navbarstyle2 navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto;"
+					class="activepage" id="UserHomeImg"></img></li>
+				<li class="activepage2"><a href="profile.html"
+					style="color: blue;" id="UserHome"> </a></li>
+				<li class="ex1"><a href="home.html" style="color: white;"><span
+						class="glyphicon glyphicon-user"></span> Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container-fluid" style="margin-top: 3em;">
+		<div class="row">
+			<div class="col-md-3 padding-0" style="position: relative;">
+				<img src="" id="profilePhotoImg" class="img-responsive crop">
+				<button
+					style="position: absolute; bottom: 0; left: 0; background-color: grey; border: none;"
+					type="button" class="btn btn-info" data-toggle="modal"
+					data-target="#myModal2">
+					<span class="glyphicon glyphicon-camera"></span>
+				</button>
+
+			</div>
+			<div class="col-md-7 padding-0">
+				<img src="a.jpg" class="img-responsive crop">
+			</div>
+		</div>
+	</div>
+
+
+	<!--  Edit from here  Edit from here Edit from here Edit from here Edit from here Edit from here-->
+	<div class="container-fluid">
+		<ul class="nav nav-pills" style="margin-left: 24em;">
+			<li><button onclick="window.location.href = 'profile.html';"
+					class="btn ex1 navbarstyle"
+					style="font-weight: bold; background: #dfe3ee; color: black;"
+					id="Timeline">Timeline</button></li>
+			<li><button
+					onclick="window.location.href = 'profileAbout.html';"
+					class="btn ex1 navbarstyle"
+					style="font-weight: bold; background: #dfe3ee; color: black;"
+					id="About">
+					<span class="glyphicon glyphicon-user"></span> About
+				</button></li>
+			<li><button
+					onclick="window.location.href = 'profilePhotos.html';"
+					class="btn ex1 navbarstyle"
+					style="font-weight: bold; background: white; color: black;">
+					<span class="glyphicon glyphicon-camera"></span> Photos
+				</button></li>
+			<li><button
+					onclick="window.location.href = 'profileFriends.html';"
+					class="btn ex1 navbarstyle"
+					style="font-weight: bold; background: #dfe3ee; color: black;">
+					<span class="glyphicon glyphicon-glass"></span> Friends
+				</button></li>
+			<li><button
+					onclick="window.location.href = 'PwdVerify.html';"
+					class="btn ex1 navbarstyle"
+					style="font-weight: bold; background: #dfe3ee; color: black;">
+					<span class="glyphicon glyphicon-edit"></span> Change Password
+				</button></li>
+		</ul>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span class="glyphicon glyphicon-picture"></span>&ensp;&ensp;<b>Photos</b>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 dynamicPanel" id="imagesAll1"></div>
+							<div class="col-sm-3 dynamicPanel" id="imagesAll2"></div>
+							<div class="col-sm-3 dynamicPanel" id="imagesAll3"></div>
+							<div class="col-sm-3 dynamicPanel" id="imagesAll4"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ------------------------------------------------------------------------------------ -->
+	<!-- Modal -->
+	<div id="myModal2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Upload Photo</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="container-fluid row" style="display: inline;">
+						<div class="col-md-8">
+							<form id="myModal2Form" action="webapi/file/upload" method="post"
+								enctype="multipart/form-data">
+								<p id="uploadImage">
+									Select a file : <input type="file" name="file" size="45"
+										class="btn btn-success" required/>
+								</p>
+								<input type="text" name="Id" id="profilePhotoId" value=""
+									style="display: none;"> <input type="submit"
+									value="Upload It" class="btn btn-warning" />
+
+							</form>
+						</div>
+						<div class="col-md-4">
+							<img src="a.jpg" id="modalProfileImg"
+								style="width: 100%; height: 10em;" onError="doSomething();" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	var displayPeople = function(data, i) {
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default dynamicPanel";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body dynamicPanel";
+		{
+			var newDiv = document.createElement("DIV");
+			newDiv.style.height = "15em";
+			var elem = document.createElement("img");
+			elem.setAttribute('src', "users/" + sessionStorage.id + "/" + data);
+			elem.className = "fittodiv";
+			//elem.setAttribute("height", "auto");
+			//elem.setAttribute("width", "100em");
+			newDiv.appendChild(elem);
+			newPanelBody.appendChild(newDiv);
+			//----//
+		}
+		newPanel.appendChild(newPanelBody);
+		document.getElementById("imagesAll" + (i % 4 + 1))
+				.appendChild(newPanel);
+		//console.log(data);
+
+	};
+	/*function load_home() {
+	 document.getElementById("section1").innerHTML='<object type="text/html" data="home.html" style="width:100%; height: 100%;" ></object>';
+	}*/
+	//var friends=document.getElementById("section2");
+	//var photos=document.getElementById("section3");
+	//-----------------------------------------------------------------//
+	//------------------------------------------------------------//
+	$('#myModal2').on('shown.bs.modal', function(e) {
+		document.getElementById("profilePhotoId").value = sessionStorage.id;
+	})
+	//------------------------------------------------------------//
+	//-----------------------------------------------------------------//
+	$(".btn").mouseup(function() {
+		$(this).blur();
+	})
+	//-----------------------------------------------------------//
+	$.ajax({
+		type : "post",
+		// make sure you respect the same origin policy with this url:
+		// http://en.wikipedia.org/wiki/Same_origin_policy
+		//dataType: "text",
+		url : "webapi/profile/" + sessionStorage.id,
+
+		success : function(msg) {
+			//console.log(msg);
+			document.getElementById("profilePhotoImg").src = msg.profileImage;
+		}
+	});
+
+	$.ajax({
+		type : "post",
+		// make sure you respect the same origin policy with this url:
+		// http://en.wikipedia.org/wiki/Same_origin_policy
+		//dataType: "text",
+		url : "webapi/photos/" + sessionStorage.id,
+
+		success : function(msg) {
+			var res = msg.split("#");
+			//console.log(res);
+			var len = res.length - 1;
+			for (i = 0; i < len; i++) {
+				displayPeople(res[i], i);
+				//console.log(res[i]);
+			}
+
+			//document.getElementById("profilePhotoImg").src = msg.profileImage;
+		}
+	});
+	//-----------------------------------/
+</script>

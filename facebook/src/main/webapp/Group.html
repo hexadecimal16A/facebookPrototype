@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/chat.css">
+
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<script src="js/navbar.js"></script>
+<script src="js/chat.js"></script>
+<title>Groups</title>
+<style>
+.aff {
+	margin-top: 4em;
+	width: 100%;
+}
+
+.fittodiv {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+
+p.heading {
+	font-weight: bold;
+	color: grey;
+	font-family: "Times New Roman", Times, serif;
+	line-height: 0%;
+}
+
+a.heading, a.heading:hover, a.heading:active {
+	font-family: "Times New Roman", Times, serif;
+	color: black;
+	text-decoration: none !important;
+}
+
+.padding0 {
+	padding-right: 2em;
+	margin-right: 1em;
+}
+
+.inputstyle {
+	background: transparent;
+	color: black;
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+	text-align: center;
+	width: 250px;
+}
+
+.navbarstyle {
+	background-color: #1F83E5;
+	border: 0px;
+}
+
+li.ex1:hover, li.ex1:active {
+	background-color: #145ea8;
+}
+
+.activepage {
+	background-color: white;
+}
+
+.searchBox {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.edit {
+	font-size: 0.9em;
+}
+
+.activepage2 {
+	border-bottom: 6px solid #04afbf;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbarstyle  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto; padding: 0;"
+					id="UserHomeImg"></img></li>
+				<li class="ex1"><a href="profile.html"
+					style="color: white;" id="UserHome"></a></li>
+				<li class="ex1"><a href="home.html"
+					style="color: white;"><span class="glyphicon glyphicon-user"></span>
+						Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 5em;">
+			<div class="col-md-9">
+				<nav class="navbar" data-spy="affix" data-offset-top="197">
+					<ul class="nav navbar-nav">
+						<li id="groupsLabel"><a href="#" id="groupsHeading" class="activepage2">All Groups</a></li>
+						<li><a href="#" id="yourGroupsHeading">Your Groups</a></li>
+						<li><a href="#" id="discoverGroupsHeading">Discover</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><button type="button" class="btn btn-success"
+								data-toggle="modal" data-target="#createModal">Create
+								Group</button></li>
+					</ul>
+				</nav>
+				<div class="row" id="allGroups">
+					<div id="groupInfo1" class="col-md-6" style="margin-top: 2em;">
+					</div>
+					<div id="groupInfo2" class="col-md-6" style="margin-top: 2em;">
+					</div>
+				</div>
+				<div class="row" id="yourGroups" style="display:none;">
+					<div id="yourGroupInfo1" class="col-md-6" style="margin-top: 2em;">
+					</div>
+					<div id="yourGroupInfo2" class="col-md-6" style="margin-top: 2em;">
+					</div>
+				</div>
+				<div class="row" id="discoverGroups" style="display:none;">
+					<div id="discoverGroupInfo1" class="col-md-6" style="margin-top: 2em;">
+					</div>
+					<div id="discoverGroupInfo2" class="col-md-6" style="margin-top: 2em;">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+					
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- ////////////////////////Create Group Modal -->
+
+
+	<!-- Modal -->
+	<div id="createModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Create New Group</h4>
+				</div>
+				<div class="modal-body">
+					<form id="createGroupForm">
+						<div class="form-group">
+							<label for="groupName">Group Name</label> <input type="text"
+								class="form-control" id="groupName" name="group_name" required>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="adminId" 
+							name="admin_id" style="display:none">
+						</div>
+						<div class="form-group">
+							<label>Privacy</label><br> <label class="radio-inline"><input
+								type="radio" name="privacy" value="0" checked>Public </label> <label
+								class="radio-inline"><input type="radio"
+								name="privacy" value="1">Private </label> 
+
+						</div>
+						<input id="submitButton" type="submit" class="btn" value=""
+							style="display: none;">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="modalSave" type="button" class="btn btn-primary"
+						onclick="document.getElementById('submitButton').click()">Create</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
+<script>
+var groupInfo=function(data,i,j){
+	//console.log(data);
+	var newPanel = document.createElement("DIV");
+	newPanel.className = "panel panel-default";
+	var newPanelBody = document.createElement("DIV");
+	newPanelBody.className = "panel-body";
+	{	var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-4";
+		var elem = document.createElement("img");
+		elem.setAttribute('src',data['piclocation']);
+		elem.className="fittodiv";
+		//elem.setAttribute("height", "auto");
+		//elem.setAttribute("width", "100em");
+		newDiv.appendChild(elem);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		
+		if(j==3){
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-5";
+			var h5 = document.createElement("h5");
+			var h5text = document.createTextNode(data['group_name']); 
+			h5.appendChild(h5text);
+			newDiv.appendChild(h5);
+			newPanelBody.appendChild(newDiv);
+			
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-3";
+			var btn = document.createElement("BUTTON");
+			btn.id = "groupJoin-" + data["group_id"]+"_"+sessionStorage.id;
+			var t = document.createTextNode("Join");
+			btn.appendChild(t);
+			btn.className = "btn btn-info";
+			newDiv.appendChild(btn);
+			newPanelBody.appendChild(newDiv);
+
+		}
+		else{
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-8";
+			var h5 = document.createElement("a");
+			h5.href="#";
+			h5.id="group_"+data["group_id"];
+			var h5text = document.createTextNode(data['group_name']); 
+			h5.appendChild(h5text);
+			newDiv.appendChild(h5);
+			newPanelBody.appendChild(newDiv);
+		}
+		newPanelBody.appendChild(document.createElement("BR"));
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-8";
+		var h5 = document.createElement("h6");
+		h5.id="groupmembers_"+data["group_id"];
+		var h5text = document.createTextNode("Members "); 
+		h5.appendChild(h5text);
+		var x = document.createElement("SPAN");
+		x.className="badge"
+	    var t = document.createTextNode(data["group_count"]);
+	    x.appendChild(t);
+	    h5.appendChild(x);
+		newDiv.appendChild(h5);
+		
+		//----//
+		newPanelBody.appendChild(newDiv);
+	}
+	newPanel.appendChild(newPanelBody);
+	if(i%2==0 && j==1)
+		document.getElementById('groupInfo1').appendChild(newPanel);
+	else if(j==1)
+		document.getElementById('groupInfo2').appendChild(newPanel);
+	else if(i%2==0 && j==2)
+		document.getElementById('yourGroupInfo1').appendChild(newPanel);
+	else if(j==2)
+		document.getElementById('yourGroupInfo2').appendChild(newPanel);
+	else if(i%2==0 && j==3)
+		document.getElementById('discoverGroupInfo1').appendChild(newPanel);
+	else if(j==3)
+		document.getElementById('discoverGroupInfo2').appendChild(newPanel);
+	////console.log(data);
+	
+};
+	
+	$('#groupsHeading').css('font-weight', 'bold');
+	$('#groupsLabel').addClass("active");
+	
+	$('#groupsHeading').click(function() {
+		$(this).css('font-weight', 'bold');
+		$(this).addClass("activepage2");
+		$("#yourGroupsHeading").removeClass("activepage2");
+		$('#yourGroupsHeading').css('font-weight', 'normal');
+		$("#discoverGroupsHeading").removeClass("activepage2");
+		$('#discoverGroupsHeading').css('font-weight', 'normal');
+		$('#yourGroups').css('display', 'none');
+		$('#discoverGroups').css('display', 'none');
+		$('#allGroups').css('display', 'block');
+	});
+
+	$('#yourGroupsHeading').click(function() {
+		$(this).css('font-weight', 'bold');
+		$(this).addClass("activepage2");
+		$("#groupsHeading").removeClass("activepage2");
+		$('#groupsHeading').css('font-weight', 'normal');
+		$("#discoverGroupsHeading").removeClass("activepage2");
+		$('#discoverGroupsHeading').css('font-weight', 'normal');
+		$('#discoverGroups').css('display', 'none');
+		$('#yourGroups').css('display', 'block');
+		$('#allGroups').css('display', 'none');
+	});
+	
+	$('#discoverGroupsHeading').click(function() {
+		$(this).css('font-weight', 'bold');
+		$(this).addClass("activepage2");
+		$("#groupsHeading").removeClass("activepage2");
+		$('#groupsHeading').css('font-weight', 'normal');
+		$("#yourGroupsHeading").removeClass("activepage2");
+		$('#yourGroupsHeading').css('font-weight', 'normal');
+		$('#discoverGroups').css('display', 'block');
+		$('#yourGroups').css('display', 'none');
+		$('#allGroups').css('display', 'none');
+	});
+	//console.log(sessionStorage.id);
+	$('#adminId').val(sessionStorage.id);
+	
+	var createForm = $('#createGroupForm');
+	createForm
+			.submit(function() {
+				alert(createForm.serialize());
+				$.ajax({
+						type : "post",
+						url : "webapi/group",
+						data : createForm.serialize(),
+						success : function(data) {
+							if(data){
+								sessionStorage.groupId=Number(data);
+								$('#modalSave').html('Created').prop('disabled',true);
+								setTimeout(function(){window.location.href="groupHome.html";},500);
+							}
+						}
+					});
+
+				return false;
+			});
+	
+	$.ajax({
+		type : "post",
+		url : "webapi/groupinfo/"+sessionStorage.id,
+		data : createForm.serialize(),
+		success : function(data) {
+			if(data){
+				//sessionStorage.groupId=Number(data);
+				for(i=0;i<data.length;++i){
+					groupInfo(data[i],i,1);
+					if(data[i]['admin_id']==sessionStorage.id){
+						groupInfo(data[i],i,2);
+					}
+				}
+			}	
+		},
+		complete:function(){
+			$('a[id^="group_"]').click(function(){
+				sessionStorage.groupId=$(this).attr('id').split("_")[1];
+				window.location.href="groupHome.html";
+				//console.log(($(this).attr('id')).split("_")[1]);
+			});
+		}
+	});
+	
+	
+	$.ajax({
+		type : "get",
+		url : "webapi/groupinfo/"+sessionStorage.id,
+		success : function(data) {
+			if(data){
+				console.log(data);
+				//sessionStorage.groupId=Number(data);
+				for(i=0;i<data.length;++i){
+					groupInfo(data[i],i,3);
+				}
+			}	
+		},
+		complete:function(){
+			$('button[id^="groupJoin-"]').click(function(){
+				var bid=$(this).attr('id');
+				//console.log (bid.split("-"));
+				$.ajax({
+					type:"post",
+					url:"webapi/groupinfo/add/"+bid.split("-")[1],
+					async:false,
+					success : function(data) {
+						if(data=="true"){
+							$('button[id='+ bid+ ']')
+							.html("Joined")
+							.addClass("btn-success")
+							.removeClass("btn-info")
+							.prop('disabled',true);
+							console.log((bid.split("-")[1]).split("_")[0]);
+							sessionStorage.groupId=(bid.split("-")[1]).split("_")[0];
+							window.location.href="groupHome.html";
+
+						}
+					}
+				});
+			});
+		}
+	});
+	
+	
+</script>

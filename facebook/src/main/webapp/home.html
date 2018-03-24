@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<link rel="stylesheet" href="css/home_timeline.css">
+<link rel="stylesheet" href="css/chat.css">
+<script src="js/home_timeline.js"></script>
+<script src="js/navbar.js"></script>
+<title>home</title>
+</head>
+<body>
+	<nav class="navbar navbarstyle navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto; padding: 0;"
+					id="UserHomeImg"></img></li>
+				<li class="ex1"><a href="profile.html"
+					style="color: white;" id="UserHome"> </a></li>
+				<li class="activepage"><a href="home.html"
+					style="color: blue;"><span class="glyphicon glyphicon-user"></span>
+						Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 5em;">
+			<div class="col-md-2" style="padding-right: 0;">
+				<p>
+					<a href="profile.html" id="UserName" class="heading">
+
+						<img src="" id="UserImg" style="height: 1.5em; width: 1.5em;">
+
+					</a>
+				</p>
+				<p>
+					<a href="home.html" class="heading"><span
+						class="glyphicon glyphicon-envelope"></span> Newsfeed </a>
+				</p>
+				<br>
+				<p class="heading">EXPLORE</p>
+				<a href="Group.html" class="heading"><span
+					class="glyphicon glyphicon-move"></span> Groups</a><br> <a
+					href="profileFriends.html" class="heading"><span
+					class="glyphicon glyphicon-glass"></span> Friend List</a><br> <a
+					href="profilePhotos.html" class="heading"><span
+					class="glyphicon glyphicon-camera"></span> Photos</a><br> <a
+					href="findFriends.html" class="heading"><span
+					class="glyphicon glyphicon-plus-sign"></span> Find Friends</a><br>
+				<a href="Event.html" class="heading"><span
+					class="glyphicon glyphicon-calendar"></span> Events</a><br><a
+					href='#' onclick="window.open('location.html', '_blank');" class="heading"><span
+					class="glyphicon glyphicon-map-marker"></span> Location</a>
+				
+			</div>
+
+			<!-- ////////////////////NEWS FEED////////////////////////// -->
+			<div class="col-md-5" style="padding-right: 1em;" id="newsFeed"
+				name="newsFeed">
+				<form id="onmymind" action="webapi/newsfeed" method="post"
+					enctype="multipart/form-data">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<a href="#" id="newsfeedPicToggle" type="button"><span
+								class="glyphicon glyphicon-camera"></span> Upload Photo</a>
+							<div id="fileName"></div>
+							<input type="file" id="newsfeedPic" name="newsfeedPic"
+								style="display: none;">
+						</div>
+						<div class="panel-body">
+							<textarea id="newsfeedStatus" name="newsfeedStatus"
+								placeholder="What's on your mind..."
+								style="width: 100%; border: 0; outline: 0;"></textarea>
+						</div>
+						<div class="panel-footer">
+							<button type="submit" id="newsfeedPost" class="btn btn-primary pull-right">Post</button>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="col-md-3" style="padding: 0em;">
+					
+			</div>
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+					
+					<div class="panel-heading">
+						<button class="btn btn-success" id="labQuestion" data-toggle="modal" data-target="#labQuestionModal">Lab question</button>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ----------------------------MODAL FOR LIKES------------------- -->
+
+	<!-- Modal -->
+	<div id="likesModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body" id="likesModalBody"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div id="labQuestionModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4>Search Common Groups</h4>
+				</div>
+				<div class="modal-body" id="labQuestionModalBody">
+					<label class="control-label">Email id: </label><input class="form-control" type="email" value="" id="labEmail" name="labEmail" value="anubhav" required>
+				</div>
+				<div class="modal-body" id="labResult">
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" id="labSubmit">Search</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div id="postImageVerifyDiv" style="display:none;">
+	</div>
+</body>
+</html>
+<script>
+	
+sessionStorage.groupId=null;
+
+var displayGroup=function(data){
+	//console.log(data);
+	var newPanel = document.createElement("DIV");
+	newPanel.className = "panel panel-default";
+	var newPanelBody = document.createElement("DIV");
+	newPanelBody.className = "panel-body";
+	{	var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var elem = document.createElement("img");
+		elem.setAttribute('src',data['piclocation']);
+		elem.className="fittodiv";
+		//elem.setAttribute("height", "auto");
+		//elem.setAttribute("width", "100em");
+		newDiv.appendChild(elem);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-4";
+		var h5 = document.createElement("a");
+		var h5text = document.createTextNode(data['group_name']);
+		h5.id="group_"+data['group_id'];
+		h5.appendChild(h5text);
+		newDiv.appendChild(h5);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		//----//
+		newPanelBody.appendChild(newDiv);
+	}
+	document.getElementById('labResult').appendChild(newPanelBody);
+};
+
+
+var giveInfoOnHover = function(data2, sports) {
+	console.log(sports);
+	var title;
+	title = "<b>Email: </b><p>" + data2["email"] + "</p><b>Born On: </b><p>"
+			+ data2["DOB"] + "</p>";
+	if (data2["mobile"])
+		title += "<b>MobileNo.: </b><p>" + data2["mobile"] + "</p>";
+	if (data2["hometown"])
+		title += "<b>Lives in: </b><p>" + data2["hometown"] + "</p>";
+	title += "<b>Admin Name: </b><p>" + sports.split("_")[0] + "</p>";
+	title += "<b>Group count: </b><p>" + sports.split("_")[1] + "</p>";
+	return title;
+};
+
+var displayChat = function(data1, sports) {
+	// console.log(post_id);
+	commentCollapse = document.getElementById("chatPanelBody");
+	// var newA = document.createElement('a');
+	// newA.setAttribute('href',"javascript:register_popup('narayan-prusty',
+	// 'Narayan Prusty');");
+	var ccMedia = document.createElement("DIV");
+	// ccMedia.style.whiteSpace="pre-line";
+	ccMedia.style.marginTop = "1em";
+	ccMedia.className = "media";
+	var ccMedia2 = document.createElement("DIV");
+	ccMedia2.className = "media-left";
+	var ccMedia3 = document.createElement("img");
+	ccMedia3.setAttribute('src', data1["profileImage"]);
+	ccMedia3.className = "media-object";
+	// elem.className = "fittodiv";
+	ccMedia3.setAttribute("height", "auto");
+	ccMedia3.setAttribute("width", "40px");
+	ccMedia3.setAttribute('title', giveInfoOnHover(data1, sports));
+	ccMedia3.setAttribute('data-placement', 'left');
+	ccMedia3.setAttribute('data-html', 'true');
+	ccMedia3.id = "chat_" + data1["id"];
+	ccMedia2.appendChild(ccMedia3);
+	ccMedia.appendChild(ccMedia2);
+	var ccMedia_2 = document.createElement("DIV");
+	ccMedia_2.className = "media-body";
+	ccMedia3 = document.createElement("a");
+	ccMedia3.className = "media-heading";
+	ccMedia3.style.color = "grey";
+	ccMedia3.innerHTML = data1["userName"];
+	ccMedia3.id = "chatbox_" + data1["id"];
+	
+	var temp = document.createElement("span");
+	temp.className = "badge glyphicon glyphicon-envelope"
+	temp.id = "unread_" + data1["id"];
+	ccMedia_2.appendChild(ccMedia3);
+	ccMedia_2.appendChild(temp);
+	ccMedia.appendChild(ccMedia_2);
+	commentCollapse.appendChild(ccMedia);
+};
+	
+$(document).ready(function(){	
+$('#chatPanel').css('height',$(window).height()-50);
+$('#chatPanel').css('overflow-y','scroll');
+});
+	
+	$('#labSubmit').click(function(){
+		$('#labResult').html(' ');
+		console.log($('#labEmail').val());
+		$.ajax({
+			type:'get',
+			url:'webapi/lab?user_id='+sessionStorage.id+'&email_id='+$('#labEmail').val(),
+			success:function(data){
+				if(data.length==0){
+					$('#labResult').html('No Friend with This email Id');
+					return false;
+				}
+				if(data){
+					for(var i=0;i<data.length;++i){
+						displayGroup(data[i]);
+					}
+				}
+			},
+			complete:function(){
+				var d1,d2;
+				$("a[id^='group_']").click(function(){
+					$('#chatPanelBody').html(' ');
+					var gid=$(this).attr('id').split("_")[1];
+					$.ajax({
+						type:'put',
+						url:'webapi/groupinfo/list/'+gid,
+						success:function(data){
+							d1=data;
+							for(var i=0;i<data.length;++i){
+								var sid = data[i]["id"];
+								//console.log(data[i]);
+									$.ajax({
+										type : 'get',
+										url : 'webapi/lab/getCountName?group_id='+gid+'&member_id='+sid+'&id='+sessionStorage.id+"&email_id="+$('#labEmail').val(),
+										async : false,
+										success : function(data3) {
+											//console.log(d1[i]);
+											//console.log(d2);
+											//console.log(data3);
+											displayChat(d1[i], data3);
+									},
+									complete : function() {
+										$('[id^="chat_"]').hover(function() {
+											$(this).tooltip();
+										});
+									}
+								});
+							}
+						}
+					});
+				})
+			}
+		});
+		return false;
+	});
+
+	/*$('#selectSports').change(function() {
+		changeSports($('#selectSports').val());
+	});
+
+	var changeSports = function(sports) {
+		$('#chatPanelBody').empty();
+		$.ajax({
+			type : "get",
+			// make sure you respect the same origin policy with this url:
+			// http://en.wikipedia.org/wiki/Same_origin_policy
+			//dataType: "text",
+			url : "webapi/friends/" + sessionStorage.id,
+
+			success : function(res) {
+				//console.log(res);
+				var len = res.length;
+				var data2;
+				for (i = 0; i < len; i++) {
+					var sid = res[i]["id"];
+					//console.log(res[i]);
+					$.ajax({
+						type : "post",
+						url : "webapi/profile/" + res[i]["id"],
+						async : false,
+						success : function(data) {
+							data2 = data;
+						},
+						complete : function() {
+							$.ajax({
+								type : "get",
+								url : "webapi/sportsofinterest/"
+										+ sid,
+								async : false,
+								success : function(data) {
+									//console.log(sports);
+									if (data == sports||sports=="No Filter") {
+										displayChat(res[i], data2, data);
+										//console.log(data);
+									}
+								}
+							});
+						}
+					});
+				}
+			},
+			complete : function() {
+				$('[id^="chat_"]').hover(function() {
+					$(this).tooltip();
+				});
+			}
+		});
+	};*/
+</script>

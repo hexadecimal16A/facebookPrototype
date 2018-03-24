@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css">
+	<script src="dist/js/jquery-1.9.1.js"></script>
+    <script src="dist/js/bootstrap.js"></script>
+    <script src="dist/font/"></script>
+    
+    <title>Closer</title>
+      
+    <style>
+	input::-webkit-input-placeholder {
+		color: black  !important;
+		text-align: center;
+	}
+		 
+	input:-moz-placeholder { /* Firefox 18- */
+		color: black  !important;  
+		text-align: center;
+	}
+		 
+	input::-moz-placeholder {  /* Firefox 19+ */
+		color: black  !important;  
+		text-align: center;
+	}
+		 
+	input:-ms-input-placeholder {  
+		color: black  !important;  
+		text-align: center;
+	}
+	
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover,
+	input:-webkit-autofill:focus,
+	input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+	}
+
+    .facebooktitle{
+    	font-size: 6em;
+    	font-family: "Times New Roman";
+    	font-weight: 900;
+    	color:#2E86C1  ;
+    	text-align: center;
+    }
+    .facebooktitlespace{
+    	padding: 1em;
+  		background-color:#005689;
+    }
+    .facebooktitle2{
+    	font-size: 3em;
+    	font-family: "Times New Roman";
+    	font-weight: 900;
+    	color:#212F3D;
+    	text-align: center;
+    }
+    .inputstyle{
+    	background: transparent;
+    	color:black;
+    	border:none;
+    	border-bottom: 1px solid black;
+    	outline: none;
+    	text-align: center;
+    	width: 250px;
+    }
+    .loginstyle{
+    	background: #212F3D;
+    	color: white;
+    	outline: none;
+    	text-align: center;
+    	margin-top: 1em;
+    }
+
+    .alignCenter {
+    	display: table;
+    	margin: 0 auto; 
+	}
+	.nohover:hover{
+		background: #17202A;
+		color:white;
+	}
+	
+	.temp{
+		margin-right:12em;
+	}
+    </style>	
+</head>
+<body style="background: url('img.jpg'); background-size: cover;">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-8">
+			<h1 class="facebooktitle">Closer</h1>
+			<div>
+				<button class="btn btn-info" id="getuserdata">Users
+					Credentials</button>
+
+				<button class="btn btn-info"
+					data-toggle="modal" data-target="#myyModal">Project Info</button>
+			</div>
+		</div>
+		<div class="col-sm-4" style="background-color: #5499C7; opacity: 0.9; min-height:100vh;">
+			<div class="facebooktitle2">Keep Your Friends Close</div>
+			<div class="collapse in" id="hello">
+			<div class="alignCenter" style="margin-top: 10em;">
+			<form id="form1" name="form1" method="get" action="webapi/messages">
+				<div class="form-group">
+					<input type="text" class="inputstyle" id="LogInName" name="email" onfocus="this.placeholder='';" onblur="this.placeholder='Email';" placeholder="Email"><!-- Name feild in search box -->
+				</div>
+				<div class="form-group" >
+					<input type="password" class="inputstyle" id="LogInEmail" name="password" onfocus="this.placeholder='';" onblur="this.placeholder='Password';" placeholder="Password">
+				</div>
+				<div class="form-group" style="text-align: center;">
+					<input type="submit" class="btn loginstyle nohover" value="Connect">
+				</div>
+			</form>
+			</div>
+			<div style="text-align: center; font-weight: 900;">
+				<a href="#" data-toggle="collapse" data-target=".collapse" style="color: black;">Don't have an account</a>
+			</div>
+			</div>
+			<div class="collapse">
+			<div class="alignCenter" id="register" style="margin-top: 7em;"> 
+				<div style="text-align: center; margin-bottom: 3em; font-weight: 900">
+				<a href="#" data-toggle="collapse" data-target=".collapse" style="color: black;">Already have an account</a>
+				</div>
+				<form id="form2" name="form2" method="post" action="webapi/messages">
+				<div class="form-group">
+			    	<input type="text" class="inputstyle" id="FName" name="fname" placeholder="First Name" onfocus="this.placeholder='';" onblur="this.placeholder='First Name';"><!-- Name feild in register box -->
+			    </div>
+			    <div class="form-group">
+			    	<input type="text" class="inputstyle" id="LName" name="lname" placeholder="Last Name" onfocus="this.placeholder='';" onblur="this.placeholder='Last Name';"><!-- Name feild in register box -->
+			    </div>
+			    <div class="form-group">
+			    	<input type="email" class="inputstyle" id="Email" name="email" placeholder="Email" onfocus="this.placeholder='';" onblur="this.placeholder='Email';"><!-- Email feild in register box -->
+			    </div>
+			    <div class="form-group">
+			    	<input type="text" class="inputstyle" id="Date of Birth" name="dOB" placeholder="Date Of Birth" onfocus="(this.type='date');this.placeholder='';" onfocusout="(this.type='text')" onblur="this.placeholder='Date Of Birth';"><!-- DOB feild in register box -->
+			    </div>
+			    <div class="form-group">
+			    	<input type="password" class="inputstyle" id="Password" name="password" placeholder="Password" onfocus="this.placeholder='';" onblur="this.placeholder='password';"><!-- Mobile feild in register box -->
+			    </div>
+			    <div class="form-group">
+			    <div class="col-md-6">
+			    <label class="radio-inline" style="color:black;"><input type="radio" id="Gender" name="gender" value="Male">Male</label>
+			    </div>
+			    <div class="col-md-6">
+			    <label class="radio-inline" style="color:black;"><input type="radio" id="Gender" name="gender" value="Female">Female</label>	
+			    </div>
+			    </div>
+			    <div class="form-group" style="text-align: center;">
+					<input type="submit" class="btn loginstyle nohover" value="Create Account">
+				</div>
+			    </form>
+			</div>
+			</div>
+			<div class="alert alert-warning" align="center" id="alert-box" style="visibility: hidden;">
+						Successfully Registered
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myyModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Project Info</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						<b>Title:</b> Prototype of a Part of Facebook<br> <b>Class:</b>
+						OOAD 2017(Jan-Apr)<br> <b>Group Members:</b><br>
+						MT2016018 - Anubhav Gupta <span class="pull-right temp">anubhav.gupta@iiitb.org</span><br> 
+						MT2016053 - Eshita Kukreja<span class="pull-right temp">Eshita.Isar@iiitb.org</span><br>
+						MT2016058 - Harshal Garg<span class="pull-right temp">Harshal.Garg@iiitb.org</span><br> 
+						MT2016060 - Hemant Pandey<span class="pull-right temp">Hemant.Pandey@iiitb.org</span><br>
+						MT2016083 - Mehul Singh<span class="pull-right temp">Mehul.Singh@iiitb.org</span><br> 
+						MT2016087 - Mudit Kumar Saini<span class="pull-right temp">Mudit.Saini@iiitb.org</span><br>
+						MT2016092 - Naveen Nelluri<span class="pull-right temp">Nelluri.Naveen@iiitb.org</span><br> 
+						MT2016091 - Neha Jain<span class="pull-right temp">Neha.Jain@iiitb.org</span><br>
+						<B>Group Number:</B> G01<br> <B>Instructor:</B> Dr. K V
+						Dinesha<br>
+						<B>Institute:</B> IIIT-Bangalore 
+						<a href="#" onclick="window.open('https://www.iiitb.ac.in', '_blank');">(Institute Website)</a><br>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Users Info</h4>
+	        </div>
+	        <div class="modal-body">
+	          <table class="table table-bordered" id="userdata">
+	          </table>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+  	</div>
+<!--Form for Log In-->
+<script>
+
+
+var displayUserInfo=function(data){
+	var tr=document.createElement("tr");
+	var td1=document.createElement("td");
+	td1.innerHTML=data['email'];
+	var td2=document.createElement("td");
+	td2.innerHTML=data['password'];
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	var x=document.getElementById('userdata');
+	x.appendChild(tr);
+};
+
+$('#getuserdata').click(function(){
+	$.ajax({
+		type: 'get',
+		url: 'webapi/UsersInfo',
+		success: function (data) {
+			if(data){
+			//console.log(data);
+			document.getElementById('userdata').innerHTML="";
+			for(i=0;i<data.length;++i){
+				//console.log('asas');
+				displayUserInfo(data[i]);
+			}
+			$('#myModal').modal();
+			}
+			}	
+		});
+	return false;
+});
+
+
+
+
+var form = $('#form1');
+form.submit(function () {
+ 
+$.ajax({
+type: form.attr('method'),
+url: form.attr('action'),
+data: form.serialize(),
+success: function (data) {
+	if(data){
+	sessionStorage.id=Number(data);
+	window.location.href = "home.html";
+	}
+	else{
+		document.getElementById("alert-box").innerHTML="Wrong Email or Password";
+		document.getElementById("alert-box").className="alert alert-danger";
+		document.getElementById("alert-box").style.visibility = "visible";
+		$('#alert-box').fadeIn('slow').delay(2000);
+		$('#alert-box').fadeOut('slow').delay(2000);
+	}
+	}	
+});
+ 
+return false;
+});
+
+
+var form2 = $('#form2');
+form2.submit(function () {
+//console.log(form2.serialize());
+$.ajax({
+type: form2.attr('method'),
+url: form2.attr('action'),
+data: form2.serialize(),
+success: function (data) { 
+	//console.log(data);
+	if(data=="true"){
+		document.getElementById("alert-box").style.visibility = "visible";
+		$('#alert-box').fadeIn('slow').delay(5000);
+		$('#alert-box').fadeOut('slow').delay(5000);
+		document.getElementById("form2").reset();
+	}
+	else{
+		document.getElementById("alert-box").innerHTML="Check all The Feilds";
+		document.getElementById("alert-box").className="alert alert-danger";
+		document.getElementById("alert-box").style.visibility = "visible";
+		$('#alert-box').fadeIn('slow').delay(2000);
+		$('#alert-box').fadeOut('slow').delay(2000);
+	}
+	}
+});
+ 
+return false;
+});
+</script>
+
+</body>
+</html>

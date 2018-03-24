@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/chat.css">
+<link rel="stylesheet" href="css/home_timeline.css">
+
+	
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<script src="js/navbar.js"></script>
+<script src="js/group_home.js"></script>
+<script src="js/chat.js"></script>
+
+<title>Group Home</title>
+
+<style>
+.fittodiv {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+p.heading {
+	font-weight: bold;
+	color: grey;
+	font-family: "Times New Roman", Times, serif;
+	line-height: 0%;
+}
+
+a.heading, a.heading:hover, a.heading:active {
+	font-family: "Times New Roman", Times, serif;
+	color: black;
+	text-decoration: none !important;
+}
+
+.inputstyle {
+	outline: none;
+	text-align: center;
+}
+
+.navbarstyle {
+	display: block;
+	width: 100%;
+	color: white;
+	height: 4em;
+	border-radius: 0px;
+	background-color: #444444;
+	border-color: white;
+	border-width: 0em;
+}
+
+.navbarstyle2 {
+	background-color: #1F83E5;
+	border: 0px;
+}
+
+button.ex1:hover, button.ex1:active {
+	background-color: black;
+	color: white;
+}
+
+li.ex1:hover, li.ex1:active {
+	background-color: #145ea8;
+}
+
+.activepage2 {
+	background-color: white;
+}
+
+.activepage {
+	background-color: #2484e5;
+}
+
+.panel {
+	overflow: auto;
+}
+
+.inputstyle {
+	background-color: white;
+	color: black;
+	border: none;
+	outline: none;
+	text-align: left;
+}
+
+.padding-0 {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+img {
+	object-fit: cover;
+}
+
+.crop {
+	width: 100%;
+	height: 10em;
+}
+
+.edit {
+	font-size: 0.9em;
+}
+</style>
+</head>
+
+<body style="background-color: #dfe3ee">
+	<nav class="navbar navbarstyle2 navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto;"
+					class="activepage" id="UserHomeImg"></img></li>
+				<li class="ex1"><a href="profile.html"
+					style="color: white;" id="UserHome"> </a></li>
+				<li class="ex1"><a href="home.html"
+					style="color: white;"><span class="glyphicon glyphicon-user"></span>
+						Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+
+
+	<div class="container-fluid" style="margin-top: 5em;">
+		<div class="row">
+			<div class="col-md-2" style="padding-right: 0;">
+				<p>
+					<a href="profile.html" id="UserName" class="heading">
+
+						<img src="" id="UserImg" style="height: 1.5em; width: 1.5em;">
+
+					</a>
+				</p>
+				<p>
+					<a href="home.html" class="heading"><span
+						class="glyphicon glyphicon-envelope"></span> Newsfeed </a>
+				</p>
+				<br>
+				<p class="heading">EXPLORE</p>
+				<a href="Group.html" class="heading"><span
+					class="glyphicon glyphicon-move"></span> Groups</a><br> <a
+					href="profileFriends.html" class="heading"><span
+					class="glyphicon glyphicon-glass"></span> Friend List</a><br> <a
+					href="profilePhotos.html" class="heading"><span
+					class="glyphicon glyphicon-camera"></span> Photos</a><br> <a
+					href="findFriends.html" class="heading"><span
+					class="glyphicon glyphicon-plus-sign"></span> Find Friends</a><br>
+				<a href="Event.html" class="heading"><span
+					class="glyphicon glyphicon-calendar"></span> Events</a><br><a
+					href='#' onclick="window.open('location.html', '_blank');" class="heading"><span
+					class="glyphicon glyphicon-map-marker"></span> Location</a>
+				
+			</div>
+
+
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12 padding-0" style="position: relative;">
+						<img src="" id="profilePhotoImg" class="img-responsive crop">
+						<button
+							style="position: absolute; bottom: 0; left: 0; background-color: grey; border: none;"
+							type="button" class="btn btn-info" data-toggle="modal"
+							data-target="#myModal2">
+							<span class="glyphicon glyphicon-camera"></span>
+						</button>
+						<h3 id="groupNameHeading"
+							style="position: absolute; bottom: 2em; left: 1em; color: black; font-weight: bold;">
+
+						</h3>
+					</div>
+				</div>
+				<div class="container-fluid" style="margin-top: 2em;">
+					<ul class="nav nav-pills">
+						<li><button onclick="window.location.href='groupHome.html'"
+								class="btn ex1 navbarstyle activepage"
+								style="font-weight: bold; background: white; color: black;"
+								id="Timeline">Discussion</button></li>
+						<li><button
+								onclick="window.location.href = 'groupMembers.html';"
+								class="btn ex1 navbarstyle"
+								style="font-weight: bold; background: #dfe3ee; color: black;"
+								id="About">
+								<span class="glyphicon glyphicon-user"></span> Members <span
+									id="badgeMembers" class="badge"></span>
+							</button></li>
+						<li><button
+								onclick="window.location.href = 'groupPhotos.html';"
+								class="btn ex1 navbarstyle"
+								style="font-weight: bold; background: #dfe3ee; color: black;">
+								<span class="glyphicon glyphicon-camera"></span> Photos
+							</button></li>
+						
+							<button style="font-size:0.9em; display:none;" 
+							class="btn btn-danger pull-right" id="leaveGroupButton">
+							Leave
+							</button>
+							
+						
+					</ul>
+				</div>
+				<!-- --------------------NEWS FEED----------------- -->
+				<div class="col-md-9 container-fluid" style="padding-right: 1em;"
+					id="newsFeed">
+					<br>
+					<form id="onmymind" action="webapi/groupfeed"
+						method="post" enctype="multipart/form-data">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<a href="#" id="newsfeedPicToggle" type="button"><span
+									class="glyphicon glyphicon-camera"></span> Upload Photo</a>
+								<div id="fileName"></div>
+								<input type="file" id="newsfeedPic" name="newsfeedPic"
+									style="display: none;">
+							</div>
+							<div class="panel-body">
+								<textarea id="newsfeedStatus" name="newsfeedStatus"
+									placeholder="What's on your mind..."
+									style="width: 100%; border: 0; outline: 0;"></textarea>
+							</div>
+							<div class="panel-footer">
+								<button type="submit" id="newsfeedPost" class="btn btn-primary pull-right">Post</button>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="col-md-3">
+					<br>
+					<div class="panel panel-success" id="addMembersBlock">
+						<div class="panel-heading">Add Members</div>
+						<div class="panel-body">
+							<input class="form-control" style="width:100%;font-size:0.9em;" value="" id="addMembers" name="addMemebrs">
+						</div>
+						<div class="panel-footer">
+							<button style="font-size:0.9em;" class="btn btn-success pull-right" id="addMembersButton">Search</button>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+
+
+
+
+
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+					
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ////////////// add Member Modal -->
+	
+	<div id="addMembersModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add Members</h4>
+				</div>
+				<div class="modal-body" id="addMembersModalBody"
+					style="max-height: 30em; overflow-y: scroll"></div>
+			</div>
+
+		</div>
+	</div>
+	
+	<!-- ///////////// add Member Modal End -->
+
+	<!-- ////////////-----------------///////////////////// -->
+
+	<div id="myModal2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Upload Photo</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="container-fluid row" style="display: inline;">
+						<div class="col-md-8">
+							<form id="myModal2Form"
+								action="webapi/file/uploadGroup" method="post"
+								enctype="multipart/form-data">
+								<p id="uploadImage">
+									Select a file : <input type="file" name="file" size="45"
+										class="btn btn-success" />
+								</p>
+								<input type="text" name="Id" id="profilePhotoId" value=""
+									style="display: none;"> <input type="submit"
+									value="Upload It" class="btn btn-warning" />
+
+							</form>
+						</div>
+						<div class="col-md-4">
+							<img src="a.jpg" id="modalProfileImg"
+								style="width: 100%; height: 10em;" onError="doSomething();" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ----------------------------MODAL FOR LIKES------------------- -->
+
+	<!-- Modal -->
+	<div id="likesModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body" id="likesModalBody"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div id="postImageVerifyDiv" style="display:none;">
+	</div>
+</body>
+</html>
+<script>
+	//sessionStorage.groupId=6;
+	//----------Display add Members-----------------//
+	
+	var displayAddMembers=function(data){
+	//console.log(data);
+	var newPanel = document.createElement("DIV");
+	newPanel.className = "panel panel-default";
+	var newPanelBody = document.createElement("DIV");
+	newPanelBody.className = "panel-body";
+	{	var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var elem = document.createElement("img");
+		elem.setAttribute('src',data['profileImage']);
+		elem.className="fittodiv";
+		//elem.setAttribute("height", "auto");
+		//elem.setAttribute("width", "100em");
+		newDiv.appendChild(elem);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-4";
+		var h5 = document.createElement("H5");
+		var h5text = document.createTextNode(data['name']); 
+		h5.appendChild(h5text);
+		newDiv.appendChild(h5);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['email']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['DOB']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-5";
+		var btn = document.createElement("BUTTON");	// suggest
+		btn.className="btn btn-primary pull-right edit"
+		btn.id="addMember_"+data["id"];
+		var t = document.createTextNode("Add");    
+		btn.appendChild(t); 
+		newDiv.appendChild(btn);
+
+		
+		//----//
+		newPanelBody.appendChild(newDiv);
+	}
+	document.getElementById('addMembersModalBody').appendChild(newPanelBody);
+};
+	//----------End Display add Members-------------//
+	
+	//----------Add Members Code-------------------//
+	
+	$('#addMembersButton').click(function(){
+		$('#addMembersModalBody').html(' ');
+		//console.log($('#addMembers').val());
+		//console.log(sessionStorage.id);
+		$.ajax({
+			type:"get",
+			url: "webapi/groupinfo/addMembersList?group_id="+sessionStorage.groupId+"&user_id="+sessionStorage.id+"&searchval="+$('#addMembers').val(),
+			async:false,
+			success: function(data){
+				//console.log(data);
+				for(i=0;i<data.length;++i){
+					//console.log(data[i]);
+					 displayAddMembers(data[i]);
+				}
+			},
+			complete:function(){
+				$('#addMembersModal').modal();
+				$('button[id^="addMember_"]').click(function(){
+				var bid2=this.id.split('_')[1];
+				//console.log(this.id);
+					$.ajax({
+						type:"post",
+						url: "webapi/groupinfo/add/"+sessionStorage.groupId+"_"+bid2,
+						success: function(data){
+							if(data=="true"){
+								//console.log($('button[id=addMember_'+bid2+']').attr('id'));
+								$('button[id=addMember_'+bid2+']').html("Added")
+								.prop('disabled',true);
+								//$('button[id=unfriend_'+bid.split("_")[1]+']').remove();
+								
+							}
+						}
+					});
+				});
+				
+			}
+		});
+	});
+	
+	//----------Add Members Code End---------------//
+	
+	
+	//console.log(sessionStorage.groupId);
+	
+	$('#myModal2').on('shown.bs.modal', function(e) {
+		document.getElementById("profilePhotoId").value = sessionStorage.groupId;
+	});
+	
+	var profileImgTemp="a.jpg";
+	function doSomething() {
+	    document.getElementById('modalProfileImg').src=profileImgTemp;
+	    document.getElementById('profilePhotoImg').src = profileImgTemp;
+	} 
+	
+	$(document).ready(function(){
+		document.getElementById("profilePhotoId").value = sessionStorage.groupId;
+		//console.log(document.getElementById("profilePhotoId").value);
+		var modalform2 = $('#myModal2Form');
+		modalform2.submit(function() {
+			var fd = new FormData($('#myModal2Form')[0]);
+			$.ajax({
+				type : modalform2.attr('method'),
+				url : modalform2.attr('action'),
+				data : fd,
+				enctype: 'multipart/form-data',
+		        processData: false,  // Important!
+		        contentType: false,
+		        cache: false,
+				success : function(data) {
+					if(data){
+						profileImgTemp=data;
+						document.getElementById('modalProfileImg').src=profileImgTemp;
+						document.getElementById('profilePhotoImg').src = profileImgTemp;
+						//setTimeout(location.reload.bind(location),8000);
+					}
+					else{
+						alert("Try Again");
+					}
+				}
+			});
+
+			return false;
+		});
+		
+		$('#leaveGroupButton').click(function(){
+			$.ajax({
+				type:'delete',
+				url:'webapi/groupinfo/delete?group_id='+sessionStorage.groupId+'&member_id='+sessionStorage.id,
+				success:function(data){
+					$('#leaveGroupButton').html('Left');
+					$('#leaveGroupButton').prop('disabled',true);
+					setTimeout(window.location.href="Group.html",1000);
+				}
+			});
+		});
+	});
+	
+	$.ajax({
+		type : "put",
+		// make sure you respect the same origin policy with this url:
+		// http://en.wikipedia.org/wiki/Same_origin_policy
+		//dataType: "text",
+		url : "webapi/groupinfo/" + sessionStorage.groupId,
+
+		success : function(msg) {
+			//console.log(msg);
+			if(sessionStorage.id!=msg[0].admin_id)
+				$('#leaveGroupButton').css('display','block');
+			//displayIntro(msg);
+			document.getElementById("profilePhotoImg").src = msg[0].piclocation;
+			document.getElementById("groupNameHeading").innerHTML = msg[0].group_name;
+			document.getElementById("badgeMembers").innerHTML=msg[0].group_count;
+		}
+	});
+</script>

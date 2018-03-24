@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/chat.css">
+
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<script src="js/chat.js"></script>
+
+
+
+<title>Search</title>
+<style>
+.fittodiv {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+
+p.heading {
+	font-weight: bold;
+	color: grey;
+	font-family: "Times New Roman", Times, serif;
+	line-height: 0%;
+}
+
+a.heading, a.heading:hover, a.heading:active {
+	font-family: "Times New Roman", Times, serif;
+	color: black;
+	text-decoration: none !important;
+}
+
+.padding0 {
+	padding-right: 2em;
+	margin-right: 1em;
+}
+
+.inputstyle {
+	background: transparent;
+	color: black;
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+	text-align: center;
+	width: 250px;
+}
+
+.navbarstyle {
+	background-color: #1F83E5;
+	border: 0px;
+}
+
+li.ex1:hover, li.ex1:active {
+	background-color: #145ea8;
+}
+
+.activepage {
+	background-color: white;
+}
+
+.activepage2 {
+	border-bottom: 6px solid #04afbf;
+}
+
+.searchBox {
+	display: table-cell;
+	vertical-align: middle;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbarstyle  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img src="icon.png" style="height: 50px; width: auto;"> <a
+					class="navbar-brand" href="#"
+					style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto; padding: 0;"
+					id="UserHomeImg"></img></li>
+				<li class="ex1"><a href="profile.html"
+					style="color: white;" id="UserHome"> </a></li>
+				<li class="ex1"><a href="home.html"
+					style="color: white;"><span class="glyphicon glyphicon-user"></span>
+						Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 5em;">
+			<div class="col-md-2" style="padding-right: 0;">
+				<p>
+					<a href="profile.html" id="UserName" class="heading">
+
+						<img src="" id="UserImg" style="height: 1.5em; width: 1.5em;">
+
+					</a>
+				</p>
+				<p>
+					<a href="home.html" class="heading"><span
+						class="glyphicon glyphicon-envelope"></span> Newsfeed </a>
+				</p>
+				<br>
+				<p class="heading">EXPLORE</p>
+				<a href="Group.html" class="heading"><span
+					class="glyphicon glyphicon-move"></span> Groups</a><br> <a
+					href="profileFriends.html" class="heading"><span
+					class="glyphicon glyphicon-glass"></span> Friend List</a><br> <a
+					href="profilePhotos.html" class="heading"><span
+					class="glyphicon glyphicon-camera"></span> Photos</a><br> <a
+					href="findFriends.html" class="heading"><span
+					class="glyphicon glyphicon-plus-sign"></span> Find Friends</a><br>
+				<a href="Event.html" class="heading"><span
+					class="glyphicon glyphicon-calendar"></span> Events</a><br> <a
+					href='#' onclick="window.open('location.html', '_blank');" class="heading"><span
+					class="glyphicon glyphicon-map-marker"></span> Location</a>
+				
+			</div>
+
+			<!-- ////////////////////FRIENDS////////////////////////// -->
+			<div class="col-md-5" style="padding-right: 1em;">
+				<nav class="navbar">
+					<ul class="nav navbar-nav">
+						<li class="ex1 activepage2" id="peopleHeadingLabel"><a
+							href="#" id="peopleHeading">People</a></li>
+						<li class="ex1" id="groupHeadingLabel"><a href="#"
+							id="groupHeading">Groups</a></li>
+					</ul>
+				</nav>
+				<div id="peopleSearch"></div>
+				<div id="groupSearch" style="display: none"></div>
+			</div>
+			<div class="col-md-3" style="padding: 0em;">
+
+			</div>
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+					
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+<script>
+	//------------------------------Display-----------------------------------//
+
+	$("#peopleHeadingLabel").click(function() {
+		$(this).addClass("activepage2");
+		$("#groupHeadingLabel").removeClass("activepage2");
+		$("#peopleSearch").css('display', 'block');
+		$("#groupSearch").css('display', 'none');
+	});
+
+	$("#groupHeadingLabel").click(function() {
+		$(this).addClass("activepage2");
+		$("#peopleHeadingLabel").removeClass("activepage2");
+		$("#peopleSearch").css('display', 'none');
+		$("#groupSearch").css('display', 'block');
+	});
+
+	
+	var displayGroup=function(data,groupCheck){
+		//console.log (groupCheck);
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{	var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-3";
+			var elem = document.createElement("img");
+			elem.setAttribute('src',data['piclocation']);
+			elem.className="fittodiv";
+			//elem.setAttribute("height", "auto");
+			//elem.setAttribute("width", "100em");
+			newDiv.appendChild(elem);
+			newPanelBody.appendChild(newDiv);
+			//----//
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-6";
+			if(groupCheck=="yes"){
+				var h5 = document.createElement("a");
+				h5.id="group_"+data["group_id"];
+				h5.href="#";
+				var h5text = document.createTextNode(data['group_name']); 
+				h5.appendChild(h5text);
+			}
+			if(groupCheck=="no"){
+				var h5 = document.createElement("h5");
+				var h5text = document.createTextNode(data['group_name']); 
+				h5.appendChild(h5text);
+			}
+			newDiv.appendChild(h5);
+			newPanelBody.appendChild(newDiv);
+			newPanelBody.appendChild(document.createElement("BR"));
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-6";
+			var h5 = document.createElement("h6");
+			h5.id="groupmembers_"+data["group_id"];
+			var h5text = document.createTextNode("Members "); 
+			h5.appendChild(h5text);
+			var x = document.createElement("SPAN");
+			x.className="badge"
+		    var t = document.createTextNode(data["group_count"]);
+		    x.appendChild(t);
+		    h5.appendChild(x);
+			newDiv.appendChild(h5);
+			
+			//----//
+			newPanelBody.appendChild(newDiv);
+			
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-3";
+			var btn = document.createElement("BUTTON");
+			
+			btn.id = "groupJoin-" + data["group_id"]+"_"+sessionStorage.id;
+			if(groupCheck=="no"){
+				var t = document.createTextNode("Join");
+				btn.appendChild(t);
+				btn.className = "btn btn-info"
+			}
+			if(groupCheck=="yes"){
+				var t = document.createTextNode("Joined");
+				btn.appendChild(t);
+				btn.disabled="true";
+				btn.className = "btn btn-success"
+			}
+			newDiv.appendChild(btn);
+			newPanelBody.appendChild(newDiv);
+		}
+		newPanel.appendChild(newPanelBody);
+		document.getElementById('groupSearch').appendChild(newPanel);
+		//console.log(data);
+		
+	};
+	
+	
+	var displayPeople = function(data, checkFriend) {
+		//console.log (checkFriend);
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-4";
+			var elem = document.createElement("img");
+			elem.setAttribute('src', data['profileImage']);
+			elem.className = "fittodiv";
+			//elem.setAttribute("height", "auto");
+			//elem.setAttribute("width", "100em");
+			newDiv.appendChild(elem);
+			newPanelBody.appendChild(newDiv);
+			//----//
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-5";
+			var h5 = document.createElement("H5");
+			var h5text = document.createTextNode(data['name']);
+			h5.appendChild(h5text);
+			newDiv.appendChild(h5);
+			var h6 = document.createElement("H6");
+			var h6text = document.createTextNode(data['email']);
+			h6.appendChild(h6text);
+			newDiv.appendChild(h6);
+			var h6 = document.createElement("H6");
+			var h6text = document.createTextNode(data['DOB']);
+			h6.appendChild(h6text);
+			newDiv.appendChild(h6);
+			newPanelBody.appendChild(newDiv);
+			//----//
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-3";
+			if (checkFriend != "self") {
+				var btn = document.createElement("BUTTON");
+				if (checkFriend == "no") {
+					btn.className = "btn btn-primary"
+					btn.id = "search_" + data["id"];
+					var t = document.createTextNode("Add Friend");
+				} else if (checkFriend == "yes") {
+					btn.className = "btn btn-success"
+					//btn.id="search_"+data["id"];
+					btn.disabled = "true";
+					var t = document.createTextNode("Friends");
+				} else if (checkFriend == "sent") {
+					btn.className = "btn btn-warning"
+					//btn.id="search_"+data["id"];
+					btn.disabled = "true";
+					var t = document.createTextNode("Request Sent");
+				} else if (checkFriend == "respond") {
+					btn.className = "btn btn-warning"
+					btn.addEventListener('click', function(event) {
+						window.location.href = "findFriends.html";
+					});
+					var t = document.createTextNode("Respond");
+				}
+				btn.appendChild(t);
+				newDiv.appendChild(btn);
+			}
+			//----//
+			newPanelBody.appendChild(newDiv);
+		}
+		newPanel.appendChild(newPanelBody);
+		document.getElementById('peopleSearch').appendChild(newPanel);
+		//console.log(data);
+
+	};
+
+	//-------------------------------Form Submit-------------------------------//
+
+	var form1 = $('#searchform');
+	form1
+			.submit(function() {
+
+				$
+						.ajax({
+							type : "get",
+							url : "webapi/search/"
+									+ $('#searchPeople').val(),
+							data : form1.serialize(),
+							success : function(data) {
+								if (data == "" || !data)
+									return false;
+								$('#peopleSearch').empty();
+								var cf;
+								for (i = 0; i < data.length; ++i) {
+									if (data[i]["id"] == sessionStorage.id) {
+										displayPeople(data[i], "self");
+										continue;
+									}
+									$
+											.ajax({
+												type : "post",
+												url : "webapi/friendRequest/friendCheck?friendId="
+														+ data[i]["id"]
+														+ "&userId="
+														+ sessionStorage.id,
+												async : false,
+												success : function(friendCheck) {
+													cf = friendCheck;
+
+												},
+												complete : function() {
+													displayPeople(data[i], cf);
+												}
+											});
+								}
+								$('button[id^="search_"]')
+										.click(
+												function() {
+													var bid = $(this)
+															.attr('id');
+													$
+															.ajax({
+																type : "post",
+																url : "webapi/friendRequest?userId="
+																		+ sessionStorage.id
+																		+ "&friendId="
+																		+ ($(this)
+																				.attr('id'))
+																				.split("_")[1],
+																success : function(
+																		data) {
+																	if (data == "true") {
+																		console
+																				.log($(
+																						'button[id='
+																								+ bid
+																								+ ']')
+																						.attr(
+																								'id'));
+																		$(
+
+																				'button[id='
+																						+ bid
+																						+ ']')
+																				.html(
+																						"Request Sent")
+																				.addClass(
+																						"btn-warning")
+																				.prop(
+																						'disabled',
+																						true);
+
+																	}
+																}
+															});
+												});
+							}
+						});
+
+				$.ajax({
+					type : "post",
+					url : "webapi/search/"
+							+ $('#searchPeople').val(),
+					data : form1.serialize(),
+					success : function(data) {
+						//console.log(data);
+						$('#groupSearch').empty();
+						if(data=="true")
+							return false;
+						for(i=0;i<data.length;++i){
+							var gf="no";
+							$.ajax({
+								type:"get",
+								url:"webapi/groupinfo/groupMemberCheck"
+									+"?group_id="+data[i]["group_id"]+"&member_id="+sessionStorage.id,
+								async:false,
+								success : function(groupCheck) {
+									gf = groupCheck;
+
+								},
+								complete : function() {
+									displayGroup(data[i], gf);
+								}
+								
+							});
+						}
+					},
+					complete:function(){
+						$('a[id^="group_"]').click(function(){
+							sessionStorage.groupId=$(this).attr('id').split("_")[1];
+							window.location.href="groupHome.html";
+							//console.log (($(this).attr('id')).split("_")[1]);
+						});
+						$('button[id^="groupJoin-"]').click(function(){
+							var bid=$(this).attr('id');
+							//console.log (bid.split("-"));
+							$.ajax({
+								type:"post",
+								url:"webapi/groupinfo/add/"+bid.split("-")[1],
+								async:false,
+								success : function(data) {
+									if(data=="true"){
+										$('button[id='+ bid+ ']')
+										.html("Joined")
+										.addClass("btn-success")
+										.removeClass("btn-info")
+										.prop('disabled',true);
+
+									}
+								}
+							});
+						});
+						
+					}
+				});
+
+				return false;
+			});
+
+	//--------------------------------document ready----------------------------------//
+	$(document).ready(function() {
+		$.ajax({
+			type : "get",
+			url : "webapi/search",
+			success : function(data) {
+				$('#searchPeople').val(data);
+				form1.submit();
+			}
+		});
+
+		$.ajax({
+			type : "post",
+			url : "webapi/profile/" + sessionStorage.id,
+			success : function(data) {
+				sessionStorage.userProfileImgPath = data['profileImage'];
+				$('#UserImg').attr('src', data['profileImage']);
+				$('#UserName').append(data['name']);
+				$('#UserHomeImg').attr('src', data['profileImage']);
+				$('#UserHome').append(data['name']);
+				//console.log (data);
+			}
+		});
+	});
+</script>

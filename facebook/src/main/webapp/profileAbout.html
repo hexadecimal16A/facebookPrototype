@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/chat.css">
+
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<script src="js/navbar.js"></script>
+<script src="js/profilephotoUpdate.js"></script>
+<script src="js/chat.js"></script>
+
+<title>About</title>
+
+<style>
+.inputstyle {
+	outline: none;
+	text-align: center;
+}
+
+.navbarstyle {
+	display: block;
+	width: 100%;
+	color: white;
+	height: 4em;
+	border-radius: 0px;
+	background-color: #444444;
+	border-color: white;
+	border-width: 0em;
+}
+
+.navbarstyle2 {
+	background-color: #1F83E5;
+	border: 0px;
+}
+
+button.ex1:hover, button.ex1:active {
+	background-color: black;
+	color: white;
+}
+
+li.ex1:hover, li.ex1:active {
+	background-color: #145ea8;
+}
+
+.activepage2 {
+	background-color: white;
+}
+
+.activepage3 {
+	border-bottom: 6px solid #04afbf;
+}
+
+.activepage {
+	background-color: #2484e5;
+}
+
+.panel {
+	overflow: auto;
+}
+
+.inputstyle {
+	background-color: white;
+	color: black;
+	border: none;
+	outline: none;
+	text-align: left;
+}
+
+.padding-0 {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+img {
+	object-fit: cover;
+}
+
+.crop {
+	width: 100%;
+	height: 20em;
+}
+
+.edit {
+	font-size: 0.9em;
+}
+</style>
+</head>
+
+<body style="background-color: #dfe3ee">
+	<nav class="navbar navbarstyle2  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto;"
+					class="activepage" id="UserHomeImg"></img></li>
+				<li class="activepage2"><a href="profile.html"
+					style="color: blue;" id="UserHome"> </a></li>
+				<li class="ex1"><a href="home.html"
+					style="color: white;"><span class="glyphicon glyphicon-user"></span>
+						Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid" style="margin-top: 3em;">
+		<div class="row">
+			<div class="col-md-3 padding-0" style="position: relative;">
+				<img src="" id="profilePhotoImg" class="img-responsive crop">
+				<button
+					style="position: absolute; bottom: 0; left: 0; background-color: grey; border: none;"
+					type="button" class="btn btn-info" data-toggle="modal"
+					data-target="#myModal2">
+					<span class="glyphicon glyphicon-camera"></span>
+				</button>
+
+			</div>
+			<div class="col-md-7 padding-0">
+				<img src="a.jpg" class="img-responsive crop">
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+
+
+
+			<div class="container-fluid">
+				<ul class="nav nav-pills" style="margin-left: 24em;">
+					<li><button onclick="window.location.href = 'profile.html';"
+							class="btn ex1 navbarstyle"
+							style="font-weight: bold; background: #dfe3ee; color: black;"
+							id="Timeline">Timeline</button></li>
+					<li><button
+							onclick="window.location.href = 'profileAbout.html';"
+							class="btn ex1 navbarstyle"
+							style="font-weight: bold; background: white; color: black;"
+							id="About">
+							<span class="glyphicon glyphicon-user"></span> About
+						</button></li>
+					<li><button
+							onclick="window.location.href = 'profilePhotos.html';"
+							class="btn ex1 navbarstyle"
+							style="font-weight: bold; background: #dfe3ee; color: black;">
+							<span class="glyphicon glyphicon-camera"></span> Photos
+						</button></li>
+					<li><button
+							onclick="window.location.href = 'profileFriends.html';"
+							class="btn ex1 navbarstyle"
+							style="font-weight: bold; background: #dfe3ee; color: black;">
+							<span class="glyphicon glyphicon-glass"></span> Friends
+						</button></li>
+					<li><button
+						onclick="window.location.href = 'PwdVerify.html';"
+						class="btn ex1 navbarstyle"
+						style="font-weight: bold; background: #dfe3ee; color: black;">
+						<span class="glyphicon glyphicon-edit"></span> Change Password
+					</button></li>
+				</ul>
+			</div>
+			<div class="container row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<b>About</b>
+						</div>
+
+						<nav class="navbar">
+							<ul class="nav navbar-nav">
+								<li class="ex1 activepage3" id="basicInfoHeadingLabel"><a
+									href="#" id="basicInfoHeading">Basic Info</a></li>
+								<li class="ex1" id="workEducationHeadingLabel"><a href="#"
+									id="workEducationHeading">Work and Education</a></li>
+								<li class="ex1" id="placesHeadingLabel"><a href="#"
+									id="placesHeading">Places</a></li>
+								<li class="ex1" id="soiHeadingLabel"><a href="#"
+									id="soiHeading">Sports Of Interest</a></li>
+							</ul>
+						</nav>
+
+						<div class="panel-body">
+							<div id="section1" class="panel col-md-12">
+								<div id="editButton" class="panel-heading"
+									style="text-align: right;">
+									<a href="#" id="blur" class="btn btn-warning edit"
+										data-toggle="modal" data-target="#myModal"><span
+										class="glyphicon glyphicon-edit"></span>Edit</a>
+								</div>
+
+								<form class="form-horizontal">
+									<div id="basicInfoForm">
+										<div class="form-group">
+											<div class="col-md-3">
+												<h5>Name</h5>
+											</div>
+											<div class="col-md-9 ">
+												<input type="text" class="form-control inputstyle" id="Name"
+													value="" readonly style="background-color: white;">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-md-3">
+												<h5>Email</h5>
+											</div>
+											<div class="col-md-9">
+												<input type="email" class="form-control inputstyle"
+													id="Email" value="" readonly
+													style="background-color: white;">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-md-3">
+												<h5>Birthday</h5>
+											</div>
+											<div class="col-md-9">
+												<input type="text" class="form-control inputstyle" id="DOB"
+													value="" readonly style="background-color: white;">
+											</div>
+										</div>
+										<div class="form-group" style="display: none;" id="mobilediv">
+											<div class="col-md-3">
+												<h5>Mobile</h5>
+											</div>
+											<div class="col-md-9">
+												<input type="text" class="form-control inputstyle"
+													id="Mobile" value="" readonly
+													style="background-color: white;">
+											</div>
+										</div>
+									</div>
+									<div id="placesInfoForm" style="display: none;">
+										<div class="form-group" style="display: none;" id="citydiv">
+											<div class="col-md-3">
+												<h5>City</h5>
+											</div>
+											<div class="col-md-9">
+												<input type="text" class="form-control inputstyle"
+													id="Hometown" value="" readonly
+													style="background-color: white;">
+											</div>
+										</div>
+										<div class="form-group" style="display: none;" id="countryDiv">
+											<div class="col-md-3">
+												<h5>Country</h5>
+											</div>
+											<div class="col-md-9">
+												<input type="text" name="country"
+													class="form-control inputstyle" id="Country" value=""
+													style="background-color: white;" readonly>
+											</div>
+										</div>
+									</div>
+
+									<div id="workEducationInfoForm" style="display: none;">
+										<div class="form-group" style="display: none;" id="workDiv">
+											<div class="col-md-3">
+												<h5>Work</h5>
+											</div>
+											<div class="col-md-9">
+												<input type="text" class="form-control inputstyle" id="Work"
+													value="" readonly style="background-color: white;">
+											</div>
+										</div>
+										<div class="form-group" style="display: none;" id="collegeDiv">
+											<div class="col-md-3">
+												<h5>College</h5>
+											</div>
+											<div class="col-md-9">
+												<input type="text" class="form-control inputstyle"
+													id="College" value="" readonly
+													style="background-color: white;">
+											</div>
+										</div>
+									</div>
+									<div id="soiInfoForm" style="display: none;">
+										<div class="form-group" id="soiDiv">
+											<div class="col-md-3">
+												<h5>Sports</h5>
+											</div>
+											<div class="col-md-5">
+												<input type="text" class="form-control inputstyle" id="soi"
+													value="" placeholder="Edit this to Enter a Sport" readonly
+													style="background-color: white;">
+											</div>
+											<div class="col-md-4">
+												<div id="soiEditButton" class="panel-heading"
+													style="text-align: right;">
+													<a href="#" id="soiBlur" class="btn btn-warning edit"
+														data-toggle="modal" data-target="#soiModal"><span
+														class="glyphicon glyphicon-edit"></span>Edit</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+					<div class="panel panel-default" id="chatPanel">
+						<div class="panel-heading">
+							<p>Chats</p>
+						</div>
+						<div class="panel-body" id="chatPanelBody"></div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Edit Personel Information</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" id="modalForm">
+						<div id="basicInfoFormModal">
+							<div class="form-group">
+								<div class="col-md-3">
+									<h5>Name</h5>
+								</div>
+								<div class="col-md-9 ">
+									<input type="text" class="form-control inputstyle" id="Name2"
+										name="name" value="" style="background-color: white;" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-3">
+									<h5>Birthday</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" class="form-control inputstyle" id="DOB2"
+										name="dOB" value="" style="background-color: white;" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-3">
+									<h5>Mobile</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" class="form-control inputstyle" id="Mobile2"
+										name="mobile" value="" style="background-color: white;">
+								</div>
+							</div>
+						</div>
+						<div id="placesInfoFormModal" style="display: none;">
+							<div class="form-group">
+								<div class="col-md-3">
+									<h5>City</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" class="form-control inputstyle"
+										id="Hometown2" name="hometown" value=""
+										style="background-color: white;">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-3">
+									<h5>Country</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="country"
+										class="form-control inputstyle" id="Country2" value=""
+										style="background-color: white;">
+								</div>
+							</div>
+						</div>
+						<div id="workEducationInfoFormModal" style="display: none;">
+							<div class="form-group">
+								<div class="col-md-3">
+									<h5>Work</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="works" class="form-control inputstyle"
+										id="Works2" value="" style="background-color: white;">
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="col-md-3">
+									<h5>College</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="college"
+										class="form-control inputstyle" id="College2" value=""
+										style="background-color: white;">
+								</div>
+							</div>
+							<div class="form-group">
+								<input id="submitButton" type="submit" class="btn" value=""
+									style="display: none;">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<p id="modalInfoButton">Editing...</p>
+					<button id="modalSave" type="button" class="btn btn-primary"
+						onclick="document.getElementById('submitButton').click()">Save</button>
+					<button type="button" id="modalClose" class="btn btn-danger"
+						data-dismiss="modal" onclick="modalUpdateButtons()">Close</button>
+				</div>
+			</div>
+		</div>
+		<!-- Modal end -->
+	</div>
+	<div id="myModal2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Upload Photo</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="container-fluid row" style="display: inline;">
+						<div class="col-md-8">
+							<form id="myModal2Form" action="webapi/file/upload"
+								method="post" enctype="multipart/form-data">
+								<p id="uploadImage">
+									Select a file : <input type="file" name="file" size="45"
+										class="btn btn-success" required/>
+								</p>
+								<input type="text" name="Id" id="profilePhotoId" value=""
+									style="display: none;"> <input type="submit"
+									value="Upload It" class="btn btn-warning"/>
+
+							</form>
+						</div>
+						<div class="col-md-4">
+							<img src="a.jpg" id="modalProfileImg"
+								style="width: 100%; height: 10em;" onError="doSomething();" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- SPORTS OF INTEREST MODAL -->
+
+
+	<div id="soiModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">SPORTS OF INTEREST</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="container-fluid row" style="display: inline;">
+						<div class="col-md-8">
+							<form id="soiForm">
+								<label for="sel1">Select list (select one):</label> <select
+									class="form-control" id="sportsSoi" name="sports">
+									<option>None</option>
+									<option>Cricket</option>
+									<option>Football</option>
+									<option>Chess</option>
+									<option>Hockey</option>
+									<option>Wresling</option>
+								</select> <input id="soiSubmitButton" type="submit" class="btn"
+									value="submit" style="display: none;">
+							</form>
+						</div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="soiModalSave" type="button" class="btn btn-primary"
+						onclick="document.getElementById('soiSubmitButton').click()">Save</button>
+
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</body>
+</html>
+
+<script>
+	$("#basicInfoHeading").click(function(e) {
+		e.preventDefault();
+		if ($("#basicInfoHeadingLabel").hasClass("activepage3") == false) {
+			$("#basicInfoHeadingLabel").addClass("activepage3");
+			//console.log($("#basicInfoHeadingLabel").hasClass("activepage3"));
+		}
+		$("#workEducationHeadingLabel").removeClass("activepage3");
+		$("#soiHeadingLabel").removeClass("activepage3");
+		$("#placesHeadingLabel").removeClass("activepage3");
+		$("#basicInfoForm").css('display', 'block');
+		$("#workEducationInfoForm").css('display', 'none');
+		$("#placesInfoForm").css('display', 'none');
+		$("#soiInfoForm").css('display', 'none');
+		$("#basicInfoFormModal").css('display', 'block');
+		$("#workEducationInfoFormModal").css('display', 'none');
+		$("#placesInfoFormModal").css('display', 'none');
+		$("#editButton").css('display', 'block');
+	});
+
+	$("#workEducationHeading").click(function(e) {
+		e.preventDefault();
+		if ($("#workEducationHeadingLabel").hasClass("activepage3") == false)
+			$('#workEducationHeadingLabel').addClass("activepage3");
+		$("#basicInfoHeadingLabel").removeClass("activepage3");
+		$("#soiHeadingLabel").removeClass("activepage3");
+		$("#placesHeadingLabel").removeClass("activepage3");
+		$("#basicInfoForm").css('display', 'none');
+		$("#workEducationInfoForm").css('display', 'block');
+		$("#placesInfoForm").css('display', 'none');
+		$("#soiInfoForm").css('display', 'none');
+		$("#basicInfoFormModal").css('display', 'none');
+		$("#workEducationInfoFormModal").css('display', 'block');
+		$("#placesInfoFormModal").css('display', 'none');
+		$("#editButton").css('display', 'block');
+	});
+
+	$("#placesHeading").click(function(e) {
+		e.preventDefault();
+		if ($("#placesHeadingLabel").hasClass("activepage3") == false)
+			$('#placesHeadingLabel').addClass("activepage3");
+		$("#basicInfoHeadingLabel").removeClass("activepage3");
+		$("#workEducationHeadingLabel").removeClass("activepage3");
+		$("#soiHeadingLabel").removeClass("activepage3");
+		$("#basicInfoForm").css('display', 'none');
+		$("#workEducationInfoForm").css('display', 'none');
+		$("#placesInfoForm").css('display', 'block');
+		$("#soiInfoForm").css('display', 'none');
+		$("#basicInfoFormModal").css('display', 'none');
+		$("#workEducationInfoFormModal").css('display', 'none');
+		$("#placesInfoFormModal").css('display', 'block');
+		$("#editButton").css('display', 'block');
+	});
+
+	$("#soiHeading").click(function(e) {
+		e.preventDefault();
+		if ($("#soiHeadingLabel").hasClass("activepage3") == false)
+			$('#soiHeadingLabel').addClass("activepage3");
+		$("#basicInfoHeadingLabel").removeClass("activepage3");
+		$("#workEducationHeadingLabel").removeClass("activepage3");
+		$("#placesHeadingLabel").removeClass("activepage3");
+		$("#basicInfoForm").css('display', 'none');
+		$("#workEducationInfoForm").css('display', 'none');
+		$("#placesInfoForm").css('display', 'none');
+		$("#soiInfoForm").css('display', 'block');
+		$("#basicInfoFormModal").css('display', 'none');
+		$("#workEducationInfoFormModal").css('display', 'none');
+		$("#placesInfoFormModal").css('display', 'none');
+		$("#editButton").css('display', 'none');
+	});
+
+	document.getElementById("DOB2").addEventListener("focus", function() {
+		document.getElementById("DOB2").type = "date";
+	});
+
+	document.getElementById("DOB2").addEventListener("focusout", function() {
+		document.getElementById("DOB2").type = "text";
+		if (document.getElementById("DOB2").value == "")
+			document.getElementById("DOB2").value = modalData.DOB;
+	});
+
+	//onfocus="(this.type='date');this.placeholder='';" onfocusout="(this.type='text')"
+	/*function load_home() {
+	 document.getElementById("section1").innerHTML='<object type="text/html" data="home.html" style="width:100%; height: 100%;" ></object>';
+	}*/
+	//var about = document.getElementById("section1");
+	//var friends=document.getElementById("section2");
+	//var photos=document.getElementById("section3");
+	var modalData;
+	//about.style.display = 'block';
+	//document.getElementById("About").className = "btn ex1 navbarstyle activepage";
+	/*function showAbout() {
+		about.style.display = 'block';
+		friends.style.display = 'none';
+		photos.style.display = 'none';
+	}*/
+	function modalUpdateButtons() {
+		document.getElementById('modalInfoButton').innerHTML = 'Editing...';
+		document.getElementById('modalSave').disabled = false;
+	}
+	//-----------------------------------------------------------------//
+	$('#myModal')
+			.on(
+					'shown.bs.modal',
+					function(e) {
+						document.getElementById("Name2").value = modalData.name;
+						document.getElementById("Mobile2").value = modalData.mobile ? modalData.mobile
+								: "";
+						document.getElementById("Hometown2").value = modalData.hometown ? modalData.hometown
+								: "";
+						document.getElementById("DOB2").value = modalData.DOB;
+						document.getElementById("Country2").value = modalData.country ? modalData.country
+								: "";
+						document.getElementById("College2").value = modalData.college ? modalData.college
+								: "";
+						document.getElementById("Works2").value = modalData.works ? modalData.works
+								: "";
+					})
+	//------------------------------------------------------------//
+	$('#myModal2').on('shown.bs.modal', function(e) {
+		document.getElementById("profilePhotoId").value = sessionStorage.id;
+	})
+	//------------------------------------------------------------//
+	$.ajax({
+		type : "post",
+		// make sure you respect the same origin policy with this url:
+		// http://en.wikipedia.org/wiki/Same_origin_policy
+		//dataType: "text",
+		url : "webapi/profile/" + sessionStorage.id,
+
+		success : function(msg) {
+			//console.log(msg);
+			document.getElementById("Name").value = msg.name;
+			if (msg.mobile) {
+				document.getElementById("Mobile").value = msg.mobile;
+				document.getElementById("mobilediv").style.display = "block";
+			}
+			document.getElementById("Email").value = msg.email;
+			if (msg.hometown) {
+				document.getElementById("Hometown").value = msg.hometown;
+				document.getElementById("citydiv").style.display = "block";
+			}
+			document.getElementById("DOB").value = msg.DOB;
+			document.getElementById("profilePhotoImg").src = msg.profileImage;
+			if (msg.country) {
+				document.getElementById("Country").value = msg.country;
+				document.getElementById("countryDiv").style.display = "block";
+			}
+			if (msg.works) {
+				document.getElementById("Work").value = msg.works;
+				document.getElementById("workDiv").style.display = "block";
+			}
+			if (msg.college) {
+				document.getElementById("College").value = msg.college;
+				document.getElementById("collegeDiv").style.display = "block";
+			}
+			modalData = msg;
+		}
+	});
+	//-----------------------------------------------------------------//
+	$(".btn").mouseup(function() {
+		$(this).blur();
+	})
+	//-----------------------------------------------------------//
+	var modalform = $('#modalForm');
+	modalform
+			.submit(function() {
+				$
+						.ajax({
+							type : "put",
+							url : "webapi/profile/"
+									+ sessionStorage.id,
+							data : modalform.serialize(),
+							success : function(data) {
+								if (data == "true") {
+									//console.log("YES");
+									document.getElementById("modalInfoButton").innerHTML = "Saved (Refresh this page to see changes)";
+									document.getElementById("modalSave").disabled = true;
+									window.location.reload();
+								} else {
+									document.getElementById("modalInfoButton").innerHTML = "Try Again";
+								}
+							}
+						});
+
+				return false;
+			});
+
+	//-----------------------------------/
+
+	var soiform = $('#soiForm');
+	soiform.submit(function() {
+		$.ajax({
+			type : "put",
+			url : "webapi/sportsofinterest/" + sessionStorage.id,
+			data : soiform.serialize(),
+			success : function(data) {
+				if(data=="true")
+					window.location.reload();
+				
+			}
+		});
+		//console.log(soiform.serialize());
+		return false;
+	});
+
+	$.ajax({
+		type : "get",
+		url : "webapi/sportsofinterest/" + sessionStorage.id,
+		success : function(data) {
+			//console.log(data);
+			$('#soi').val(data);
+			if(data=="None")
+				$('#soi').val('');
+				
+		}
+	});
+</script>
+
+

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/chat.css">
+
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<script src="js/chat.js"></script>
+<script src="js/navbar.js"></script>	
+<title>Friends</title>
+<style>
+
+a{
+    cursor: pointer;
+}
+
+.fittodiv{
+	 height: 100%; 
+	 width: 100%; 
+	 object-fit: contain;
+}
+
+p.heading {
+	font-weight: bold;
+	color:grey;
+    font-family: "Times New Roman", Times, serif;
+    line-height: 0%;
+}
+
+a.heading, a.heading:hover, a.heading:active {
+	font-family: "Times New Roman", Times, serif;
+	color: black;
+    text-decoration: none !important;
+}
+
+.padding0{
+	padding-right:2em;
+	margin-right:1em;
+}
+
+.inputstyle{
+    	background: transparent;
+    	color:black;
+    	border:none;
+    	border-bottom: 1px solid black;
+    	outline: none;
+    	text-align: center;
+    	width: 250px;
+    }
+.navbarstyle{
+	background-color: #1F83E5; 
+	border:0px;
+}
+
+li.ex1:hover, li.ex1:active {background-color: #145ea8;}
+
+.activepage{
+	background-color: white;
+}
+
+.searchBox{
+	display: table-cell;
+    vertical-align: middle;
+}
+
+.edit {
+	font-size: 0.9em;
+}
+
+</style>
+</head>
+<body>
+	<nav class="navbar navbarstyle navbar-fixed-top">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+    			<img class="img-responsive2" src="icon.png" style="height: 50px; width:auto;">
+      			<a class="navbar-brand" href="#" style="color:black; font-weight: 500px;">Closer</a>
+    		</div>
+    	<form id="searchform" class="navbar-form navbar-left">
+   			<div class="input-group">
+       		<input type="Search" id="searchPeople" name="searchPeople" placeholder="Search..." class="form-control" style="min-width:30em;" />
+       			<div class="input-group-btn">
+           			<button class="btn" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+       			</div>
+   			</div>
+		</form>
+    	<ul class="nav navbar-nav navbar-right">
+    		<li><img src="" style="height:50px;width:auto; padding:0;" id="UserHomeImg"></img>
+			</li>
+    		<li class="ex1"><a href="profile.html" style="color:white;" id="UserHome"></a></li>
+      		<li class="ex1"><a href="home.html"
+					style="color: white;"><span class="glyphicon glyphicon-user"></span>
+						Home</a></li>
+      		<li class="ex1"><a href="index.html" style="color:white;"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    	</ul>
+  		</div>
+	</nav>
+
+	<div class="container-fluid">
+	<div class="row" style="margin-top: 5em;">
+		<!-- ////////////////////FRIENDS////////////////////////// -->
+		<div class="col-md-7" style="padding-right: 1em;">
+			<div class="panel panel-primary">
+				<div class="panel-heading" id="friendRequestHeading">
+				</div>
+				<div id="friendRequest" style="max-height:30em; overflow-y:scroll;">
+				</div>
+			</div>
+			<div class="panel panel-primary" style="margin-top:5em;">
+				<div class="panel-heading" id="poepleYouMayHeading">People You May Know
+				</div>
+				<div id="peopleYouMayKnow" style="max-height:30em; overflow-y:scroll;">
+				</div>
+			</div>
+			<div class="panel panel-primary" style="margin-top:5em;">
+				<div class="panel-heading" id="friendSuggestionHeading">Friend Suggestion
+				</div>
+				<div id="friendSuggestion" style="max-height:30em; overflow-y:scroll;">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3" style="padding: 0em;">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Advance Search</div>
+				<div class="panel-body">
+					<form class="form-horizontal" id="advanceSearch">
+						<div class="form-group" id="nameDiv">
+								<div class="col-md-3">
+									<h5>Name</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="name"
+										class="form-control" id="name" value=""
+										style="background-color: white;">
+								</div>
+						</div>
+						<div class="form-group" id="collegeDiv">
+								<div class="col-md-3">
+									<h5>College</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="college"
+										class="form-control"  value=""
+										style="background-color: white;">
+								</div>
+						</div>
+						<div class="form-group" id="workDiv">
+								<div class="col-md-3">
+									<h5>Work</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="works"
+										class="form-control"  value=""
+										style="background-color: white;">
+								</div>
+						</div>
+						<div class="form-group" id="hometownDiv">
+								<div class="col-md-3">
+									<h5>Hometown</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="hometown"
+										class="form-control" value=""
+										style="background-color: white;">
+								</div>
+						</div>
+						<div id="placesInfoForm">
+							<div class="form-group" id="countryDiv">
+								<div class="col-md-3">
+									<h5>Country</h5>
+								</div>
+								<div class="col-md-9">
+									<input type="text" name="country"
+										class="form-control"  value=""
+										style="background-color: white;">
+								</div>
+							</div>
+							<div class="form-group">
+								<input id="submitButton" style="margin:0px auto; display:block;" type="submit" class="btn btn-info" value="Search">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+					
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+	</div>
+	</div>
+
+<div id="searchModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		<h4 class="modal-title">Advanced Search</h4>
+        		<div class="row">
+        		<div class="col-md-3">
+        		<a href="#F">Friends</a>
+        		</div>
+        		<div class="col-md-3">
+    		    <a href="#NF">Not Friends</a>
+    		    </div>
+    		    <div class="col-md-3">
+        		<a href="#S">Sent</a>
+        		</div>
+        		<div class="col-md-3">
+				<a href="#R">Respond</a>
+				</div>
+				</div>
+      		</div>
+				<div class="modal-body" id="likesModalBody" style="height:30em; overflow-y:scroll;">
+					<div class="panel panel-success">
+						<div class="panel-heading" id="F">
+							Friends
+						</div>
+						<div class="panel-body" id="friends">
+						</div>
+					</div>
+					<div class="panel panel-warning" id="NF">
+						<div class="panel-heading">
+							Not Friends
+						</div>
+						<div class="panel-body" id="notfriends">
+						</div>
+					</div>
+					<div class="panel panel-info" id="S">
+						<div class="panel-heading">
+							Sent
+						</div>
+						<div class="panel-body" id="sent">
+						</div>
+					</div>
+					<div class="panel panel-danger" id="R">
+						<div class="panel-heading">
+							Respond
+						</div>
+						<div class="panel-body" id="respond">
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+</div>
+
+<div id="mutualFriendsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    	<div class="modal-header"><h4>Mutual Friends</h4></div>
+      <div class="modal-body" id="mutualFriendsModalBody">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<script>
+//------------------------------Display-----------------------------------//
+
+var displayPeople=function(data){
+	var newPanel = document.createElement("DIV");
+	newPanel.className = "panel panel-default";
+	var newPanelBody = document.createElement("DIV");
+	newPanelBody.className = "panel-body";
+	{	var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var elem = document.createElement("img");
+		elem.setAttribute('src',data['picturePath']);
+		elem.className="fittodiv";
+		//elem.setAttribute("height", "auto");
+		//elem.setAttribute("width", "100em");
+		newDiv.appendChild(elem);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var h5 = document.createElement("H5");
+		var h5text = document.createTextNode(data['name']); 
+		h5.appendChild(h5text);
+		newDiv.appendChild(h5);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['email']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['dOB']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-6";
+		var btn = document.createElement("BUTTON"); //not now
+		btn.className="btn btn-default pull-right edit"
+		btn.id="notNow_"+data["reqId"];
+		var t = document.createTextNode("Not Now");    
+		btn.appendChild(t); 
+		newDiv.appendChild(btn);
+		var btn = document.createElement("BUTTON");	// delete
+		btn.className="btn btn-danger pull-right edit";
+		btn.style.marginRight="1em";
+		btn.id="delete_"+data["reqId"];
+		var t = document.createTextNode("Delete");    
+		btn.appendChild(t); 
+		newDiv.appendChild(btn);
+		var btn = document.createElement("BUTTON"); //add-friend
+		btn.className="btn btn-info pull-right edit"
+		btn.style.marginRight="1em";
+		btn.id="confirm_"+data["reqId"];
+		var t = document.createTextNode("Confirm");    
+		btn.appendChild(t); 
+		newDiv.appendChild(btn);
+		
+		//----//
+		newPanelBody.appendChild(newDiv);
+	}
+	newPanel.appendChild(newPanelBody);
+	document.getElementById('friendRequest').appendChild(newPanel);
+	//console.log(data);
+	
+};
+
+var displaySuggestion=function(data){
+	var newPanel = document.createElement("DIV");
+	newPanel.className = "panel panel-default";
+	var newPanelBody = document.createElement("DIV");
+	newPanelBody.className = "panel-body";
+	{	var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var elem = document.createElement("img");
+		elem.setAttribute('src',data['picturePath']);
+		elem.className="fittodiv";
+		//elem.setAttribute("height", "auto");
+		//elem.setAttribute("width", "100em");
+		newDiv.appendChild(elem);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var h5 = document.createElement("H5");
+		var h5text = document.createTextNode(data['name']); 
+		h5.appendChild(h5text);
+		newDiv.appendChild(h5);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['email']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['dOB']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-6";
+		var btn = document.createElement("BUTTON");	// delete
+		btn.className="btn btn-danger pull-right edit";
+		btn.style.marginRight="1em";
+		btn.id="removeSug_"+data["reqId"]+"_"+data["id"];
+		btn.name="removeSug_"+data["id"];
+		var t = document.createTextNode("Remove");    
+		btn.appendChild(t); 
+		newDiv.appendChild(btn);
+		var btn = document.createElement("BUTTON"); //add-friend
+		btn.className="btn btn-info pull-right edit"
+		btn.style.marginRight="1em";
+		btn.id="addSug_"+data["id"];
+		var t = document.createTextNode("Add Friend");    
+		btn.appendChild(t); 
+		newDiv.appendChild(btn);
+		
+		//----//
+		newPanelBody.appendChild(newDiv);
+	}
+	newPanel.appendChild(newPanelBody);
+	document.getElementById('friendSuggestion').appendChild(newPanel);
+	//console.log(data);
+	
+};
+
+var peopleYouMayKnow=function(data){
+	var newPanel = document.createElement("DIV");
+	newPanel.className = "panel panel-default";
+	var newPanelBody = document.createElement("DIV");
+	newPanelBody.className = "panel-body";
+	{	var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var elem = document.createElement("img");
+		elem.setAttribute('src',data['picturePath']);
+		elem.className="fittodiv";
+		//elem.setAttribute("height", "auto");
+		//elem.setAttribute("width", "100em");
+		newDiv.appendChild(elem);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-4";
+		var h5 = document.createElement("H5");
+		var h5text = document.createTextNode(data['name']); 
+		h5.appendChild(h5text);
+		newDiv.appendChild(h5);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['email']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		var h6 = document.createElement("H6");
+		var h6text = document.createTextNode(data['dOB']); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-3";
+		var h6 = document.createElement("a");
+		h6.href="#";
+		h6.style.fontSize="0.9em";
+		h6.id="mutual_"+data['id'];
+		var h6text = document.createTextNode(data['count']+" Mutual Friends"); 
+		h6.appendChild(h6text);
+		newDiv.appendChild(h6);
+		newPanelBody.appendChild(newDiv);
+		//----//
+		var newDiv = document.createElement("DIV");
+		newDiv.className = "col-md-2";
+		var btn = document.createElement("BUTTON"); //add-friend
+		btn.className="btn btn-info pull-right edit"
+		btn.id="peopleYouMayKnow_"+data["id"];
+		var t = document.createTextNode("Add Friend");    
+		btn.appendChild(t); 
+		newDiv.appendChild(btn);
+		
+		//----//
+		newPanelBody.appendChild(newDiv);
+	}
+	newPanel.appendChild(newPanelBody);
+	document.getElementById('peopleYouMayKnow').appendChild(newPanel);
+	//console.log(data);
+	
+};
+
+
+//-------------------------------Form Submit-------------------------------//
+
+$.ajax({
+	type:"get",
+	url:"webapi/friendRequest/pendingRequest?userId="+sessionStorage.id,
+	success:function(data){
+		$('#friendRequestHeading').html('Respond to your '+ data.length +' Friend Requests');
+		for(i=0;i<data.length;++i){
+			//console.log(data[i]);
+			displayPeople(data[i]);
+		}	
+	},
+	complete:function(){
+		$('button[id^="confirm_"]').click(function(){
+			var bid=$(this).attr('id');
+			$.ajax({
+				type:"post",
+				url: "webapi/friendRequest/response?&reqId="+bid.split("_")[1]+"&response=confirm",
+				success: function(data){
+					//console.log("-----"+data+"");
+					if(data=="true"){
+						//console.log($('button[id='+bid+']').attr('id'));
+						$('button[id='+bid+']').html("Approved")
+						.addClass("btn-success")
+						.prop('disabled',true);
+						$('button[id=delete_'+bid.split("_")[1]+']').remove();
+						$('button[id=notNow_'+bid.split("_")[1]+']').remove();
+						
+					}
+				}
+			});
+			//console.log(($(this).attr('id')).split("_")[1]);
+		});
+		
+		$('button[id^="delete_"]').click(function(){
+			var bid=$(this).attr('id');
+			$.ajax({
+				type:"post",
+				url: "webapi/friendRequest/response?&reqId="+bid.split("_")[1]+"&response=delete",
+				success: function(data){
+					//console.log("-----"+data+"");
+					if(data=="true"){
+						//console.log($('button[id='+bid+']').attr('id'));
+						$('button[id='+bid+']').html("Deleted")
+						.addClass("btn-default")
+						.prop('disabled',true);
+						$('button[id=confirm_'+bid.split("_")[1]+']').remove();
+						$('button[id=notNow_'+bid.split("_")[1]+']').remove();
+						
+					}
+				}
+			});
+			//console.log(($(this).attr('id')).split("_")[1]);
+		});
+		
+		$('button[id^="notNow_"]').click(function(){
+			var bid=$(this).attr('id');
+			$.ajax({
+				type:"post",
+				url: "webapi/friendRequest/response?&reqId="+bid.split("_")[1]+"&response=notnow",
+				success: function(data){
+					//console.log("-----"+data+"");
+					if(data=="true"){
+						//console.log($('button[id='+bid+']').attr('id'));
+						$('button[id='+bid+']').html("On Hold")
+						.prop('disabled',true);
+						$('button[id=confirm_'+bid.split("_")[1]+']').remove();
+						$('button[id=delete_'+bid.split("_")[1]+']').remove();
+						
+					}
+				}
+			});
+			//console.log(($(this).attr('id')).split("_")[1]);
+		});
+	}
+});
+
+
+$.ajax({
+	type:"get",
+	url:"webapi/friendRequest/getsuggestion/"+sessionStorage.id,
+	success:function(data){
+		$('#friendSuggestionHeading').html('Respond to '+ data.length +' Suggestions');
+		for(i=0;i<data.length;++i){
+			//console.log("XXXX"+data[i]);
+			displaySuggestion(data[i]);
+		}	
+	},
+	complete:function(){
+		$('button[id^="addSug_"]').click(function(){
+			var bid=$(this).attr('id').split("_")[1];
+			$.ajax({
+				type:"post",
+				url: "webapi/friendRequest?friendId="+bid+"&userId="+sessionStorage.id+"&extra=1",
+				success: function(data){
+					//console.log("-----"+data+"");
+					if(data=="true"){
+						//console.log($('button[id='+bid+']').attr('id'));
+						$('button[id=addSug_'+bid+']').html("Request Sent")
+						.addClass("btn-success")
+						.prop('disabled',true);
+						$('button[name=removeSug_'+bid+']').remove();
+						
+					}
+					if(data=="false"){
+						window.location.reload();
+					}
+				}
+			});
+			//console.log(($(this).attr('id')).split("_")[1]);
+		});
+		
+		$('button[id^="removeSug_"]').click(function(){
+			var rem=$(this).attr('id').split("_")[1];
+			var add=$(this).attr('id').split("_")[2];
+			$.ajax({
+				type:"post",
+				url: "webapi/friendRequest/removesuggestion/"+rem,
+				success: function(data){
+					//console.log("-----"+data+"");
+					if(data=="true"){
+						//console.log($('button[id='+bid+']').attr('id'));
+						$('button[id=addSug_'+add+']').remove();
+						$('button[id=removeSug_'+rem+'_'+add+']').html("Removed")
+						.prop('disabled',true);
+						
+					}
+				}
+			});
+			//console.log(($(this).attr('id')).split("_")[1]);
+		});
+	}
+});
+
+var mutualFriends=function(data){
+	//--------data has id use to redirect to profile page
+	var divxx = document.createElement("DIV");
+	divxx.style.marginBottom="1em";
+	divxx.className = "row";
+	
+		var div1 = document.createElement("DIV");
+		div1.className = "col-md-2";
+		var elem = document.createElement("img");
+		elem.setAttribute('src', data['profileImage']);
+		//elem.className = "fittodiv";
+		elem.setAttribute("height", "auto");
+		elem.setAttribute("width", "60em");
+		div1.appendChild(elem)
+		divxx.appendChild(div1);
+		//---------//
+		var div2 = document.createElement("DIV");
+		div2.className = "col-md-5";
+		//var p=document.createElement("P");
+		var t = document.createTextNode(data["name"]);
+		//p.appendChild(t);
+		div2.append(t);
+		divxx.appendChild(div2);
+		divxx.appendChild(document.createElement("br"));
+		//p.appendChild(document.createElement("br"));
+	
+	document.getElementById("mutualFriendsModalBody").appendChild(divxx);
+	//console.log($("#likesModal.modal-body"));
+};
+
+
+//--------------------------------document ready----------------------------------//
+$(document).ready(function(){
+	//webapi/friendRequest/peopleyoumayknow/7
+	$.ajax({
+		type:"get",
+		url:"webapi/friendRequest/peopleyoumayknow/"+sessionStorage.id,
+		success:function(data){
+			
+			//$('#friendRequestHeading').html('Respond to your '+ data.length +' Friend Requests');
+			if(data)
+			for(i=0;i<data.length;++i){
+				//console.log(data[i]);
+				peopleYouMayKnow(data[i]);
+			}	
+		},
+		complete:function(data){
+			$('button[id^="peopleYouMayKnow_"]').click(function(){
+				var bid=$(this).attr('id').split("_")[1];
+				$.ajax({
+					type:"post",
+					url: "webapi/friendRequest?friendId="+bid+"&userId="+sessionStorage.id,
+					async:false,
+					success: function(data){
+						//console.log("-----"+data+"");
+						if(data=="true"){
+							//console.log($('button[id='+bid+']').attr('id'));
+							$('button[id=peopleYouMayKnow_'+bid+']').html("Request Sent").addClass('btn btn-warning')
+							.prop('disabled',true);
+							
+						}
+					}
+				});
+				//console.log(($(this).attr('id')).split("_")[1]);
+			});
+			$('a[id^="mutual_"]').click(function(){
+				var tempId=sessionStorage.id+"_"+$(this).attr('id').split("_")[1];
+				$("#mutualFriendsModalBody").text(" ");
+				$("#mutualFriendsModal").modal('show');
+				$.ajax({
+					type:'get',
+					url:'webapi/friendRequest/MutualFriend/'+tempId,
+					async:false,
+					success:function(data){
+						for(var i=0;i<data.length;++i){
+							mutualFriends(data[i]);
+							//document.getElementById("mutualFriendsModalBody").innerHTML=data[i]["name"];
+						}
+					},
+					complete:function(){
+						$("#mutualFriendsModal").modal('show');
+					}
+				});
+			});
+		}
+	});
+	
+});
+ 
+
+//------------------------------------//
+
+	
+
+var displayPeople2 = function(data, checkFriend) {
+		//console.log (checkFriend);
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-4";
+			var elem = document.createElement("img");
+			elem.setAttribute('src', data['profileImage']);
+			elem.className = "fittodiv";
+			//elem.setAttribute("height", "auto");
+			//elem.setAttribute("width", "100em");
+			newDiv.appendChild(elem);
+			newPanelBody.appendChild(newDiv);
+			//----//
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-5";
+			var h5 = document.createElement("H5");
+			var h5text = document.createTextNode(data['name']);
+			h5.appendChild(h5text);
+			newDiv.appendChild(h5);
+			var h6 = document.createElement("H6");
+			var h6text = document.createTextNode(data['email']);
+			h6.appendChild(h6text);
+			newDiv.appendChild(h6);
+			var h6 = document.createElement("H6");
+			var h6text = document.createTextNode(data['DOB']);
+			h6.appendChild(h6text);
+			newDiv.appendChild(h6);
+			newPanelBody.appendChild(newDiv);
+			//----//
+			var newDiv = document.createElement("DIV");
+			newDiv.className = "col-md-3";
+			if (checkFriend != "self") {
+				var btn = document.createElement("BUTTON");
+				if (checkFriend == "no") {
+					btn.className = "btn btn-primary"
+					btn.id = "search_" + data["id"];
+					var t = document.createTextNode("Add Friend");
+					btn.appendChild(t);
+				} else if (checkFriend == "yes") {
+					btn.className = "btn btn-success"
+					//btn.id="search_"+data["id"];
+					btn.disabled = "true";
+					var t = document.createTextNode("Friends");
+					btn.appendChild(t);
+				} else if (checkFriend == "sent") {
+					btn.className = "btn btn-warning"
+					//btn.id="search_"+data["id"];
+					btn.disabled = "true";
+					var t = document.createTextNode("Request Sent");
+					btn.appendChild(t);
+				} else if (checkFriend == "respond") {
+					btn.className = "btn btn-warning"
+					btn.addEventListener('click', function(event) {
+						window.location.href = "findFriends.html";
+					});
+					var t = document.createTextNode("Respond");
+					btn.appendChild(t);
+				}
+				newDiv.appendChild(btn);
+			}
+			//----//
+			newPanelBody.appendChild(newDiv);
+		}
+		newPanel.appendChild(newPanelBody);
+		if(checkFriend=="yes")
+		document.getElementById('friends').appendChild(newPanel);
+		else if(checkFriend=="no")
+			document.getElementById('notfriends').appendChild(newPanel);
+		else if(checkFriend=="respond")
+			document.getElementById('respond').appendChild(newPanel);
+		else if (checkFriend=="sent")
+			document.getElementById('sent').appendChild(newPanel);
+		//console.log(data);
+
+};
+
+var aSearch=$('#advanceSearch');
+aSearch.submit(function(){
+	$('#searchModal').modal('show');
+	$('#friends').html('');
+	$('#notfriends').html('');
+	$('#sent').html('');
+	$('#respond').html('');
+	$.ajax({
+		type:'post',
+		url: 'webapi/advancedsearch',
+		data: aSearch.serialize(),
+		success : function(data) {
+			//console.log(data);
+			if (data == "" || !data)
+				return false;
+			$('#peopleSearch').empty();
+			var cf;
+			for (i = 0; i < data.length; ++i) {
+				if (data[i]["id"] == sessionStorage.id) {
+					continue;
+				}
+				$.ajax({
+					type : "post",
+					url : "webapi/friendRequest/friendCheck?friendId="
+							+ data[i]["id"]
+							+ "&userId="
+							+ sessionStorage.id,
+					async : false,
+					success : function(friendCheck) {
+						cf = friendCheck;
+					},
+					complete : function() {
+						displayPeople2(data[i], cf);
+					}
+				});
+			}
+			$('button[id^="search_"]').click(function() {
+					var bid = $(this).attr('id');
+					$.ajax({
+						type : "post",
+						url : "webapi/friendRequest?userId="
+								+ sessionStorage.id
+								+ "&friendId="
+								+ ($(this).attr('id')).split("_")[1],
+						success : function(data) {
+							if (data == "true") {
+								//console.log($('button[id='+ bid+ ']').attr('id'));
+								$('button[id='+ bid+ ']').html("Request Sent").addClass("btn-warning").prop('disabled',true);
+							}
+						}
+					});
+				});
+			},
+			complete:function(){
+				$('#searchModal').modal('show');
+			}
+		});
+	return false;
+	});
+	
+
+</script>

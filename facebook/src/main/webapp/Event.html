@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+<link rel="stylesheet" href="css/profile_timeline.css">
+<link rel="stylesheet" href="css/chat.css">
+<script src="js/chat.js"></script>
+<script src="js/navbar.js"></script>
+
+<title>Events</title>
+<style>
+.image-container {
+	display: flex;
+	justify-content: center;
+}
+
+.activepage2 {
+	border-bottom: 6px solid #04afbf;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbarstyle2  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto;"
+					class="activepage" id="UserHomeImg"></img></li>
+				<li class="ex1"><a href="profile.html" style="color: white;"
+					id="UserHome"> </a></li>
+				<li class="ex1"><a href="home.html" style="color: white;"><span
+						class="glyphicon glyphicon-user"></span> Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 5em;">
+			<div class="col-md-2" style="padding-right: 0;">
+				<p>
+					<a href="profile.html" id="UserName" class="heading"> <img
+						src="" id="UserImg" style="height: 1.5em; width: 1.5em;">
+
+					</a>
+				</p>
+				<p>
+					<a href="home.html" class="heading"><span
+						class="glyphicon glyphicon-envelope"></span> Newsfeed </a>
+				</p>
+				<br>
+				<p class="heading">EXPLORE</p>
+				<a href="Group.html" class="heading"><span
+					class="glyphicon glyphicon-move"></span> Groups</a><br> <a
+					href="profileFriends.html" class="heading"><span
+					class="glyphicon glyphicon-glass"></span> Friend List</a><br> <a
+					href="profilePhotos.html" class="heading"><span
+					class="glyphicon glyphicon-camera"></span> Photos</a><br> <a
+					href="findFriends.html" class="heading"><span
+					class="glyphicon glyphicon-plus-sign"></span> Find Friends</a><br>
+				<a href="Event.html" class="heading"><span
+					class="glyphicon glyphicon-calendar"></span> Events</a><br> <a
+					href='#' onclick="window.open('location.html', '_blank');"
+					class="heading"><span class="glyphicon glyphicon-map-marker"></span>
+					Location</a>
+			</div>
+
+		<!-- ------------------------------------show events ------------------------------------>
+
+			<div class="col-sm-7">
+				<nav class="navbar">
+					<ul class="nav navbar-nav">
+						<li id="eventsLabel"><a href="#" id="eventsHeading"
+							class="activepage2">All Events</a></li>
+						<li><a href="#" id="yourEventsHeading">Your Events</a></li>
+						<li><a href="#" id="invitationEventsHeading">Invitation</a></li>
+						<li><a href="#" id="discoverEventsHeading">Discover</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><button type="button" class="btn btn-success"
+								data-toggle="modal" data-target="#myModal">Create
+								Event</button></li>
+					</ul>
+				</nav>
+				<div class="row" id="allEvents">
+					<div class="col-md-6" style="margin-top: 2em;">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-user" style="color: red"></span>&ensp;&ensp;<b>Past
+									Events</b>
+							</div>
+						</div>
+						<div id="eventInfo1" style="margin-top: 2em;"></div>
+					</div>
+					<div class="col-md-6" style="margin-top: 2em;">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-user" style="color: green"></span>&ensp;&ensp;<b>Upcoming
+									and Ongoing Events</b>
+							</div>
+						</div>
+						<div id="eventInfo2" style="margin-top: 2em;"></div>
+					</div>
+				</div>
+				<div class="row" id="yourEvents" style="display: none;">
+					<div id="yourEventInfo1" class="col-md-6" style="margin-top: 2em;">
+					</div>
+					<div id="yourEventInfo2" class="col-md-6" style="margin-top: 2em;">
+					</div>
+				</div>
+				<div class="row" id="discoverEvents" style="display: none;">
+					<div id="discoverEventInfo1" class="col-md-6"
+						style="margin-top: 2em;"></div>
+					<div id="discoverEventInfo2" class="col-md-6"
+						style="margin-top: 2em;"></div>
+				</div>
+				<div class="row" id="invitationEvents" style="display: none;">
+					<div id="invitationEventInfo1" class="col-md-6"
+						style="margin-top: 2em;"></div>
+					<div id="invitationEventInfo2" class="col-md-6"
+						style="margin-top: 2em;"></div>
+				</div>
+
+				<!-- ------------------------------------show events -->
+				
+				
+			</div>
+
+			<div class="col-md-1" style="padding: 0em;"></div>
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Create Event</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" id="createEventForm"
+						enctype="multipart/form-data">
+
+						<!-- ---------------event photo------------- -->
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="email">Event
+								Photo</label>
+							<div class="col-sm-8">
+								<input type="file" name="file" size="45" class="btn btn-success" />
+							</div>
+						</div>
+						<!-- ---------------event photo------------- -->
+
+
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="email">Event
+								name</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="event_name"
+									name="event_name" placeholder="event name" required>
+							</div>
+						</div>
+						<!-- -------------------------------------- -->
+						<!-- ------------------------------------- -->
+						<div class="form-group">
+							<label class="control-label col-sm-4">Location</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="location"
+									name="location" placeholder="location" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Start Date</label>
+							<div class="col-sm-4">
+								<input type="date" name="start_date" class="form-control"
+									required>
+							</div>
+							<label class="control-label col-sm-2">Start Time</label>
+							<div class="col-sm-4">
+								<input type="time" name="start_time" class="form-control"
+									title="24 hr format" required>
+							</div>
+
+						</div>
+						<a href="#" class="pull-right"
+							onclick="this.style.display = 'none'" data-toggle="collapse"
+							data-target="#demos">end date</a>
+						<div id="demos" class="form-group collapse">
+							<label class="control-label col-sm-2">End Date</label>
+							<div class="col-sm-4">
+								<input type="date" name="end_date" class="form-control">
+							</div>
+							<label class="control-label col-sm-2">End Time</label>
+							<div class="col-sm-4">
+								<input type="time" name="end_time" class="form-control"
+									title="24 hr format">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="control-label col-sm-4"
+										style="margin-top: 4em; margin-left: 6.3em;">Description</label>
+								</div>
+								<div class="col-sm-7">
+									<textarea class="form-control" rows="5" name="description"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="submit" class="btn btn-primary pull-right"
+									value="Create Event">
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- -------------------------- -->
+
+</body>
+<script>
+	sessionStorage.event_id=null;
+	
+	var displayEvents = function(data) {
+		//console.log(data);
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{
+			//var newDiv=document.createElement("DIV");
+			//newDiv.className="col-md-6";
+
+			var elem = document.createElement("img");
+			elem.setAttribute('src', data['piclocation']);
+			elem.className = "img-responsive crop";
+			//		newDiv.appendChild(elem);
+			newPanelBody.appendChild(elem);
+
+			//		var newDiv=document.createElement("DIV");
+			//		newDiv.className="col-md-6";
+
+			var h5 = document.createElement("H5");
+			var h5text = document.createTextNode(data['event_name']);
+			h5.appendChild(h5text);
+			//		newDiv.appendChild(h5);
+			newPanelBody.appendChild(h5);
+
+			var btn = document.createElement("BUTTON");
+			btn.className = "btn btn-info pull-right edit";
+			btn.id = data["event_id"];
+			btn.addEventListener('click', function(event) {
+				sessionStorage.event_id = btn.id;
+				window.location.href = "eventAbout.html";
+			});
+			var t = document.createTextNode("About event");
+			btn.appendChild(t);
+			newPanelBody.appendChild(btn);
+		}
+		newPanel.appendChild(newPanelBody);
+		//console.log(data['comparableDate']);
+		if (data["end_time"]=="" || Number(data["end_time"])>Number(new Date().getTime())) {
+			//console.log(data["event_name"]);
+			//console.log(time);
+			//console.log(data["end_time"].split('T')[1]);
+			document.getElementById('eventInfo2').appendChild(newPanel);
+		} else {
+			document.getElementById('eventInfo1').appendChild(newPanel);
+			//console.log("xxxxxxxxxx "+time.localeCompare(data["end_time"].split('T')[1]));
+		}
+
+	};
+	
+	
+	var displayEventsDiscover = function(data,i) {
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{
+			//var newDiv=document.createElement("DIV");
+			//newDiv.className="col-md-6";
+
+			var elem = document.createElement("img");
+			elem.setAttribute('src', data['piclocation']);
+			elem.className = "img-responsive crop";
+			//		newDiv.appendChild(elem);
+			newPanelBody.appendChild(elem);
+
+			//		var newDiv=document.createElement("DIV");
+			//		newDiv.className="col-md-6";
+
+			var h5 = document.createElement("H5");
+			var h5text = document.createTextNode(data['event_name']);
+			h5.appendChild(h5text);
+			//		newDiv.appendChild(h5);
+			newPanelBody.appendChild(h5);
+
+			var btn = document.createElement("BUTTON");
+			btn.className = "btn btn-info pull-right edit";
+			btn.id = data["event_id"];
+			btn.addEventListener('click', function(event) {
+				sessionStorage.event_id = btn.id;
+				window.location.href = "eventAbout.html";
+			});
+			var t = document.createTextNode("About event");
+			btn.appendChild(t);
+			newPanelBody.appendChild(btn);
+		}
+		newPanel.appendChild(newPanelBody);
+		//console.log(data['comparableDate']);
+		if (i%2==0) {
+			//console.log(data["event_name"]);
+			//console.log(time);
+			//console.log(data["end_time"].split('T')[1]);
+			document.getElementById('discoverEventInfo1').appendChild(newPanel);
+		} else {
+			document.getElementById('discoverEventInfo2').appendChild(newPanel);
+			//console.log("xxxxxxxxxx "+time.localeCompare(data["end_time"].split('T')[1]));
+		}
+
+	};
+
+	var displayYourEvent = function(data,i) {
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{
+			//var newDiv=document.createElement("DIV");
+			//newDiv.className="col-md-6";
+
+			var elem = document.createElement("img");
+			elem.setAttribute('src', data['piclocation']);
+			elem.className = "img-responsive crop";
+			//		newDiv.appendChild(elem);
+			newPanelBody.appendChild(elem);
+
+			//		var newDiv=document.createElement("DIV");
+			//		newDiv.className="col-md-6";
+
+			var h5 = document.createElement("H5");
+			var h5text = document.createTextNode(data['event_name']);
+			h5.appendChild(h5text);
+			//		newDiv.appendChild(h5);
+			newPanelBody.appendChild(h5);
+
+			var btn = document.createElement("BUTTON");
+			btn.className = "btn btn-info pull-right edit";
+			btn.id = data["event_id"];
+			btn.addEventListener('click', function(event) {
+				sessionStorage.event_id = btn.id;
+				window.location.href = "eventAbout.html";
+			});
+			var t = document.createTextNode("About event");
+			btn.appendChild(t);
+			newPanelBody.appendChild(btn);
+		}
+		newPanel.appendChild(newPanelBody);
+		//console.log(data['comparableDate']);
+		if (i%2==0) {
+			//console.log(data["event_name"]);
+			//console.log(time);
+			//console.log(data["end_time"].split('T')[1]);
+			document.getElementById('yourEventInfo1').appendChild(newPanel);
+		} else {
+			document.getElementById('yourEventInfo2').appendChild(newPanel);
+			//console.log("xxxxxxxxxx "+time.localeCompare(data["end_time"].split('T')[1]));
+		}
+
+	};
+	
+	var displayEventsInvites = function(data,i) {
+		var newPanel = document.createElement("DIV");
+		newPanel.className = "panel panel-default";
+		var newPanelBody = document.createElement("DIV");
+		newPanelBody.className = "panel-body";
+		{
+			//var newDiv=document.createElement("DIV");
+			//newDiv.className="col-md-6";
+
+			var elem = document.createElement("img");
+			elem.setAttribute('src', data['piclocation']);
+			elem.className = "img-responsive crop";
+			//		newDiv.appendChild(elem);
+			newPanelBody.appendChild(elem);
+
+			//		var newDiv=document.createElement("DIV");
+			//		newDiv.className="col-md-6";
+
+			var h5 = document.createElement("H5");
+			var h5text = document.createTextNode(data['event_name']);
+			h5.appendChild(h5text);
+			//		newDiv.appendChild(h5);
+			newPanelBody.appendChild(h5);
+
+			var btn = document.createElement("BUTTON");
+			btn.className = "btn btn-info pull-right edit";
+			btn.id = data["event_id"];
+			btn.addEventListener('click', function(event) {
+				sessionStorage.event_id = btn.id;
+				window.location.href = "eventAbout.html";
+			});
+			var t = document.createTextNode("About event");
+			btn.appendChild(t);
+			newPanelBody.appendChild(btn);
+		}
+		newPanel.appendChild(newPanelBody);
+		//console.log(data['comparableDate']);
+		if (i%2==0) {
+			//console.log(data["event_name"]);
+			//console.log(time);
+			//console.log(data["end_time"].split('T')[1]);
+			document.getElementById('invitationEventInfo1').appendChild(newPanel);
+		} else {
+			document.getElementById('invitationEventInfo2').appendChild(newPanel);
+			//console.log("xxxxxxxxxx "+time.localeCompare(data["end_time"].split('T')[1]));
+		}
+
+	};
+	
+
+	$(document).ready(function() {
+		
+		$('#eventsHeading').css('font-weight', 'bold');
+		$('#eventsLabel').addClass("active");
+		
+		$('#eventsHeading').click(function() {
+			$(this).css('font-weight', 'bold');
+			$(this).addClass("activepage2");
+			$("#yourEventsHeading").removeClass("activepage2");
+			$('#yourEventsHeading').css('font-weight', 'normal');
+			$("#discoverEventsHeading").removeClass("activepage2");
+			$('#discoverEventsHeading').css('font-weight', 'normal');
+			$("#invitationEventsHeading").removeClass("activepage2");
+			$('#invitationEventsHeading').css('font-weight', 'normal');
+			$('#yourEvents').css('display', 'none');
+			$('#discoverEvents').css('display', 'none');
+			$('#allEvents').css('display', 'block');
+			$('#invitationEvents').css('display', 'none');
+			
+		});
+
+		$('#yourEventsHeading').click(function() {
+			$(this).css('font-weight', 'bold');
+			$(this).addClass("activepage2");
+			$("#eventsHeading").removeClass("activepage2");
+			$('#eventsHeading').css('font-weight', 'normal');
+			$("#discoverEventsHeading").removeClass("activepage2");
+			$('#discoverEventsHeading').css('font-weight', 'normal');
+			$("#invitationEventsHeading").removeClass("activepage2");
+			$('#invitationEventsHeading').css('font-weight', 'normal');
+			$('#discoverEvents').css('display', 'none');
+			$('#yourEvents').css('display', 'block');
+			$('#allEvents').css('display', 'none');
+			$('#invitationEvents').css('display', 'none');
+			$.ajax({
+				type:'get',
+				url:'webapi/events/myevent/'+sessionStorage.id,
+				success:function(data){
+					console.log(data);
+					$('#yourEventInfo2').html('');
+					$('#yourEventInfo1').html('');
+					for(var i=0;i<data.length;++i)
+						displayYourEvent(data[i],i);
+				}
+			});
+		});
+		
+		$('#discoverEventsHeading').click(function() {
+			$(this).css('font-weight', 'bold');
+			$(this).addClass("activepage2");
+			$("#eventsHeading").removeClass("activepage2");
+			$('#eventsHeading').css('font-weight', 'normal');
+			$("#yourEventsHeading").removeClass("activepage2");
+			$('#yourEventsHeading').css('font-weight', 'normal');
+			$("#invitationEventsHeading").removeClass("activepage2");
+			$('#invitationEventsHeading').css('font-weight', 'normal');
+			$('#discoverEvents').css('display', 'block');
+			$('#yourEvents').css('display', 'none');
+			$('#allEvents').css('display', 'none');
+			$('#invitationEvents').css('display', 'none');
+			$.ajax({
+				type:'post',
+				url:'webapi/events/discover',
+				success:function(data){
+					console.log(data);
+					
+					$('#discoverEventInfo1').html('');
+					$('#discoverEventInfo2').html('');
+					for(var i=0;i<data.length;++i)
+						displayEventsDiscover(data[i],i);
+				}
+			});
+		});
+		
+		$('#invitationEventsHeading').click(function() {
+			$(this).css('font-weight', 'bold');
+			$(this).addClass("activepage2");
+			$("#eventsHeading").removeClass("activepage2");
+			$('#eventsHeading').css('font-weight', 'normal');
+			$("#yourEventsHeading").removeClass("activepage2");
+			$('#yourEventsHeading').css('font-weight', 'normal');
+			$("#discoverEventsHeading").removeClass("activepage2");
+			$('#discoverEventsHeading').css('font-weight', 'normal');
+			$('#discoverEvents').css('display', 'none');
+			$('#yourEvents').css('display', 'none');
+			$('#allEvents').css('display', 'none');
+			$('#invitationEvents').css('display', 'block');
+
+			$.ajax({
+				type:'post',
+				url:'webapi/events/invitation/'+sessionStorage.id,
+				success:function(data){
+					console.log(data);
+					
+					$('#invitationEventInfo2').html('');
+					$('#invitationEventInfo1').html('');
+					for(var i=0;i<data.length;++i)
+						displayEventsInvites(data[i],i);
+				}
+			});
+		});
+		
+		
+		var modalform2 = $('#createEventForm');
+		modalform2.submit(function() {
+			var fd = new FormData($('#createEventForm')[0]);
+			console.info(fd);
+			$.ajax({
+				type : 'post',
+				url : 'webapi/events/'+sessionStorage.id,
+				data : fd,
+				enctype : 'multipart/form-data',
+				processData : false, // Important!
+				contentType : false,
+				cache : false,
+				success : function(data) {
+					if(Number(data)==0){
+						alert("END DATE CAN'T BE BEFORE START DATE");
+					}
+					else{
+						sessionStorage.event_id=Number(data);
+						window.location.href="eventAbout.html";
+					}
+					//console.log(data);
+					/*if (data) {
+						if($('#fileName').html()!=""){
+							alert("please wait file is being uploaded");
+							setTimeout(function(){window.location.reload()},7000);
+						}
+						else
+							window.location.reload();
+					}*/
+				}
+			});
+
+			return false;
+		});
+	});
+	
+	$.ajax({
+		type:'put',
+		url:'webapi/events/listevents/'+sessionStorage.id,
+		success:function(data){
+			console.log(data);
+			for(var i=0;i<data.length;++i)
+				displayEvents(data[i]);
+		}
+	})
+</script>
+</html>
+
+
+

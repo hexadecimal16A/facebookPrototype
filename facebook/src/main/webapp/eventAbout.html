@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-1.9.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="js/navbar.js"></script>
+<script src="dist/font/"></script>
+<script src="js/event_about.js"></script>
+<link rel="stylesheet" href="css/chat.css">
+<script src="js/chat.js"></script>
+<script src="js/event_timeline.js"></script>
+<link rel="stylesheet" href="css/profile_timeline.css">
+
+
+
+<title>Event Home</title>
+<style>
+.image-container {
+	display: flex;
+	justify-content: center;
+}
+
+.event-image-cover {
+	height: 300px;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbarstyle2  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="img-responsive2" src="icon.png"
+					style="height: 50px; width: auto;"> <a class="navbar-brand"
+					href="#" style="color: black; font-weight: 500px;">Closer</a>
+			</div>
+			<form id="searchform" class="navbar-form navbar-left">
+				<div class="input-group">
+					<input type="Search" id="searchPeople" name="searchPeople"
+						placeholder="Search..." class="form-control"
+						style="min-width: 30em;" />
+					<div class="input-group-btn">
+						<button class="btn" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><img src="" style="height: 50px; width: auto;"
+					class="activepage" id="UserHomeImg"></img></li>
+				<li class="ex1"><a href="profile.html" style="color: white;"
+					id="UserHome"> </a></li>
+				<li class="ex1"><a href="home.html" style="color: white;"><span
+						class="glyphicon glyphicon-user"></span> Home</a></li>
+				<li class="ex1"><a href="index.html" style="color: white;"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 5em;">
+			<div class="col-md-2" style="padding-right: 0;">
+				<p>
+					<a href="profile.html" id="UserName" class="heading"> <img
+						src="" id="UserImg" style="height: 1.5em; width: 1.5em;">
+
+					</a>
+				</p>
+				<p>
+					<a href="home.html" class="heading"><span
+						class="glyphicon glyphicon-envelope"></span> Newsfeed </a>
+				</p>
+				<br>
+				<p class="heading">EXPLORE</p>
+				<a href="Group.html" class="heading"><span
+					class="glyphicon glyphicon-move"></span> Groups</a><br> <a
+					href="profileFriends.html" class="heading"><span
+					class="glyphicon glyphicon-glass"></span> Friend List</a><br> <a
+					href="profilePhotos.html" class="heading"><span
+					class="glyphicon glyphicon-camera"></span> Photos</a><br> <a
+					href="findFriends.html" class="heading"><span
+					class="glyphicon glyphicon-plus-sign"></span> Find Friends</a><br>
+				<a href="Event.html" class="heading"><span
+					class="glyphicon glyphicon-calendar"></span> Events</a><br> <a
+					href='#' onclick="window.open('location.html', '_blank');"
+					class="heading"><span class="glyphicon glyphicon-map-marker"></span>
+					Location</a>
+			</div>
+
+			<!-- ////////////////////NEWS FEED////////////////////////// -->
+
+			<div class="col-sm-5" id="newsFeed">
+				<!-- ------------------------------------show events -->
+				<div id="selectedEvent"></div>
+				<div id="showSummary" style="display:none;"class="panel panel-default">
+					<div class="panel panel-heading">
+						<h4>Summary</h4>
+					</div>
+					<div class="panel panel-body">
+						<p id="eventSummary">No Summary</p>
+					</div>
+				</div>
+					
+				<form style="display:none;" id="summary" action="webapi/eventfeed" method="post">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4>Sumary</h4>
+						</div>
+						<div class="panel-body">
+							<textarea id="summaryStatus" name="summaryStatus"
+								placeholder="Summary of event"
+								style="width: 100%; border: 0; outline: 0;"></textarea>
+						</div>
+						<div class="panel-footer">
+							<button id="summaryPost" type="submit" class="btn btn-primary pull-right">Post</button>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</form>
+				<form style="display:none;" id="onmymind" action="webapi/eventfeed" method="post"
+					enctype="multipart/form-data">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<a href="#" id="newsfeedPicToggle" type="button"><span
+								class="glyphicon glyphicon-camera"></span> Upload Photo</a>
+							<div id="fileName"></div>
+							<input type="file" id="newsfeedPic" name="newsfeedPic"
+								style="display: none;">
+						</div>
+						<div class="panel-body">
+							<textarea id="newsfeedStatus" name="newsfeedStatus"
+								placeholder="What's on your mind..."
+								style="width: 100%; border: 0; outline: 0;"></textarea>
+						</div>
+						<div class="panel-footer">
+							<button id="newsfeedPost" type="submit" class="btn btn-primary pull-right">Post</button>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-3" style="padding: 0em;" id="inviteMembersBlockShow">
+				<div class="panel panel-success" id="inviteMembersBlock">
+					<div class="panel-heading">Invite People</div>
+					<div class="panel-body">
+						<input class="form-control" style="width:100%;font-size:0.9em;" value="" id="inviteMembers" name="addMemebrs">
+					</div>
+					<div class="panel-footer">
+						<button style="font-size:0.9em;" class="btn btn-success pull-right" id="inviteMembersButton">Search</button>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-2 fixedChat" style="padding-right: 0em;">
+				<div class="panel panel-default" id="chatPanel">
+
+					<div class="panel-heading">
+						<p>Chats</p>
+					</div>
+					<div class="panel-body" id="chatPanelBody"></div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- ------------------------------------show events -->
+
+
+	<!-- ----------------------------MODAL FOR LIKES------------------- -->
+
+	<!-- Modal -->
+	<div id="likesModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body" id="likesModalBody"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="inviteMembersModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Invite Members</h4>
+				</div>
+				<div class="modal-body" id="inviteMembersModalBody"
+					style="max-height: 30em; overflow-y: scroll"></div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div id="editModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body" id="editModalBody">
+				<form class="form-horizontal" id="update">
+					<div class="form-group">
+						<label class="control-label col-md-4" for="email">Event
+							name</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="event_name"
+								name="event_name" placeholder="event name" required>
+						</div>
+					</div>
+					<!-- -------------------------------------- -->
+					<!-- ------------------------------------- -->
+					<div class="form-group">
+						<label class="control-label col-sm-4">Location</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="location"
+								name="location" placeholder="location" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">Start Date</label>
+						<div class="col-sm-4">
+							<input type="date" name="start_date" class="form-control"
+								required>
+						</div>
+						<label class="control-label col-sm-2">Start Time</label>
+						<div class="col-sm-4">
+							<input type="time" name="start_time" class="form-control"
+								title="24 hr format" required>
+						</div>
+
+					</div>
+					<a href="#" class="pull-right"
+						onclick="this.style.display = 'none'" data-toggle="collapse"
+						data-target="#demos">end date</a>
+					<div id="demos" class="form-group collapse">
+						<label class="control-label col-sm-2">End Date</label>
+						<div class="col-sm-4">
+							<input type="date" name="end_date" class="form-control">
+						</div>
+						<label class="control-label col-sm-2">End Time</label>
+						<div class="col-sm-4">
+							<input type="time" name="end_time" class="form-control"
+								title="24 hr format">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-4">
+								<label class="control-label col-sm-4"
+									style="margin-top: 4em; margin-left: 6.3em;">Description</label>
+							</div>
+							<div class="col-sm-7">
+								<textarea class="form-control" rows="5" name="description"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<input type="submit" class="btn btn-primary pull-right"
+								value="Update">
+						</div>
+					</div>
+				</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- -------------------------- -->
+<div id="postImageVerifyDiv" style="display:none;"></div>
+</body>
+
+</html>
